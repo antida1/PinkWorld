@@ -186,6 +186,7 @@ namespace PinkWorld.Web.Controllers
             {
                 Address = user.Address,
                 FirstName = user.FirstName,
+                SecondName = user.SecondName,
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 ImageId = user.ImageId,
@@ -218,6 +219,7 @@ namespace PinkWorld.Web.Controllers
                 User user = await _userHelper.GetUserAsync(User.Identity.Name);
 
                 user.FirstName = model.FirstName;
+                user.SecondName = model.SecondName;
                 user.LastName = model.LastName;
                 user.Address = model.Address;
                 user.PhoneNumber = model.PhoneNumber;

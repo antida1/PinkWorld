@@ -41,8 +41,8 @@ namespace PinkWorld.Web.Models
 
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44357/images/no-image.pn"
-            : $"";
+            ? $"https://localhost:44357/images/no-image.png"
+            : $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "Image")]
         public IFormFile ImageFile { get; set; }
