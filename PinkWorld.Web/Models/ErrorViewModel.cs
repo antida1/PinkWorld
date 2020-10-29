@@ -1,5 +1,3 @@
-using System;
-
 namespace PinkWorld.Web.Models
 {
     public class ErrorViewModel

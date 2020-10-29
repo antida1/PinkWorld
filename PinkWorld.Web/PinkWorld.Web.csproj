@@ -1,12 +1,51 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\Responses\Response.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="wwwroot\js\Responses\Response.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="MimeKit" Version="2.9.2" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PinkWorld.Common\PinkWorld.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Views\Account\ChangeUser.cshtml" />
+    <None Include="Views\Account\ConfirmEmail.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\NotAuthorized.cshtml" />
+    <None Include="Views\Account\RecoverPassword.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Account\ResetPassword.cshtml" />
+    <None Include="Views\Account\_User.cshtml" />
+    <None Include="Views\Countries\AddCity.cshtml" />
+    <None Include="Views\Countries\AddDepartment.cshtml" />
+    <None Include="Views\Countries\Create.cshtml" />
+    <None Include="Views\Countries\Details.cshtml" />
+    <None Include="Views\Countries\DetailsDepartment.cshtml" />
+    <None Include="Views\Countries\Edit.cshtml" />
+    <None Include="Views\Countries\EditCity.cshtml" />
+    <None Include="Views\Countries\EditDepartment.cshtml" />
+    <None Include="Views\Countries\Index.cshtml" />
+    <None Include="Views\Countries\_City.cshtml" />
+    <None Include="Views\Countries\_Country.cshtml" />
+    <None Include="Views\Countries\_Department.cshtml" />
   </ItemGroup>
 
 </Project>
