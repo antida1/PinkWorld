@@ -86,7 +86,20 @@ namespace PinkWorld.Web.Data
                             Name = "Antioquia",
                             Cities = new List<City>
                             {
-                                new City { Name = "Medellín" },
+                                new City { 
+                                    Name = "Medellín" ,
+                                    Sites = new List<Site>{
+                                        new Site
+                                        {
+                                            Name = "Clinica de Cancerología Las Américas",
+                                            Address = "Cra 70 # 13-41",
+                                            Phone = "3409393",
+                                            BussinessName = "Instituto de Cancerología Las Américas",
+                                            Latitude = 6.214238,
+                                            Longitude =75.593906
+                                        }
+                                    }
+                                },
                                 new City { Name = "Envigado" },
                                 new City { Name = "Itagüí" }
                             }

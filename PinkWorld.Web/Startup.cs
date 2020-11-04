@@ -72,10 +72,11 @@ namespace PinkWorld.Web
 
             services.AddTransient<SeedDb>();
             services.AddScoped<IBlobHelper, BlobHelper>();
+            services.AddScoped<ISiteHelper, SiteHelper>();
             services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IMailHelper, MailHelper>();
-            services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IUserHelper, UserHelper>();            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

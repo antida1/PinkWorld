@@ -1,0 +1,122 @@
+﻿@model PinkWorld.Web.Data.Entities.City
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<h2>Details</h2>
+
+<div>
+    <h4>City</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SitesNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SitesNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AddSite" asp-route-id="@Model.Id" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Site</a>
+    <a asp-action="EditSite" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="DetailsDepartment" asp-route-id="@Model.IdDepartment" class="btn btn-success">Back to List</a>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sites</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().Address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().Phone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().BussinessName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().Latitude)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().Longitude)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sites.FirstOrDefault().ImageFullPath)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Sites)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BussinessName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Latitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Longitude)
+                            </td>
+                            <td>
+                                <img src="@Url.Content(@item.ImageFullPath)" style="width:100px;height:100px;border-radius:50%" />
+                            </td>
+                            <td>
+                                <a asp-action="EditSite" asp-route-id="@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/js/deleteDialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+
+            // Delete item
+            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Countries/DeleteSite/', false);
+        });
+    </script>
+}

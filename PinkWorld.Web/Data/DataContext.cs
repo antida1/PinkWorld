@@ -16,6 +16,8 @@ namespace PinkWorld.Web.Data
 
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Site> Sites { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);         
@@ -36,6 +38,12 @@ namespace PinkWorld.Web.Data
             {
                 dep.HasIndex("Name", "CountryId").IsUnique();
                 dep.HasOne(d => d.Country).WithMany(c => c.Departments).OnDelete(DeleteBehavior.Cascade);
+            }); 
+            
+            modelBuilder.Entity<Site>(sit =>
+            {
+                sit.HasIndex("Name", "CityId").IsUnique();
+                sit.HasOne(c => c.City).WithMany(c => c.Sites).OnDelete(DeleteBehavior.Cascade);
             });
 
         }
