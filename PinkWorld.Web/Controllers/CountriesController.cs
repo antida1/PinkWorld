@@ -553,6 +553,90 @@ namespace PinkWorld.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> EditSite(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Site site = await _context.Sites.FindAsync(id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            SiteViewModel model = new SiteViewModel
+            {
+                Address = site.Address,
+                Name = site.Name,
+                Phone = site.Phone,
+                ImageId = site.ImageId,
+                Id = site.Id,
+                BussinessName = site.BussinessName,
+                Latitude = site.Latitude,
+                Longitude = site.Longitude  
+            };
+
+            City city = await _context.Cities.FirstOrDefaultAsync(c => c.Sites.FirstOrDefault(s => s.Id == model.Id) != null);
+            model.IdCity = city.Id;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditSite(SiteViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid imageId = model.ImageId;
+
+                if (model.ImageFile != null)
+                {
+                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "sites");
+                }
+
+                Site site = await _context.Sites.FindAsync(model.Id);
+                if (site == null)
+                {
+                    return NotFound();
+                }
+
+                site.Name = model.Name;
+                site.Phone = model.Phone;
+                site.Address = model.Address;
+                site.BussinessName = model.BussinessName;
+                site.ImageId = imageId;
+                site.Latitude = model.Latitude;
+                site.Longitude = model.Longitude;
+                site.IdCity = model.IdCity;               
+
+                try
+                {
+                    _context.Update(site);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"{nameof(DetailsCity)}/{site.IdCity}");
+
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "There are a record with the same name.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+            }
+            return View(model);
+        }
 
     }
 }
