@@ -295,6 +295,7 @@ namespace PinkWorld.Web.Controllers
 
             Department department = await _context.Departments
                 .Include(d => d.Cities)
+                .ThenInclude(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
@@ -445,6 +446,7 @@ namespace PinkWorld.Web.Controllers
             }
 
             City city = await _context.Cities
+                .Include(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (city == null)
             {
@@ -636,6 +638,26 @@ namespace PinkWorld.Web.Controllers
                 }
             }
             return View(model);
+        }
+
+        public async Task<IActionResult> DeleteSite(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Site site = await _context.Sites
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            City city = await _context.Cities.FirstOrDefaultAsync(c => c.Sites.FirstOrDefault(s => s.Id == site.Id) != null);
+            _context.Sites.Remove(site);
+            await _context.SaveChangesAsync();
+            return RedirectToAction($"{nameof(DetailsCity)}/{city.Id}");
         }
 
     }
