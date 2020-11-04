@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Questionnaires\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="2.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
@@ -38,6 +42,7 @@
     <None Include="Views\Countries\_City.cshtml" />
     <None Include="Views\Countries\_Country.cshtml" />
     <None Include="Views\Countries\_Department.cshtml" />
+    <None Include="Views\Questionnaires\Index.cshtml" />
   </ItemGroup>
 
 </Project>

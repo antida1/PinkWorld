@@ -18,6 +18,8 @@ namespace PinkWorld.Web.Data
 
         public DbSet<Site> Sites { get; set; }
 
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);         
