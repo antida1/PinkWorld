@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PinkWorld.Prism.Views.Carousel4">
+             x:Class="PinkWorld.Prism.Views.Carousel4"
+             Title="Step 4">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="C4.png"></Image>
