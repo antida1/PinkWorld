@@ -16,6 +16,14 @@ namespace PinkWorld.Prism
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {
+
+            CarouselPage carouselPage = new CarouselPage();
+            carouselPage.Children.Add(new MainPage());
+            carouselPage.Children.Add(new Carousel());
+            carouselPage.Children.Add(new Carousel2());
+            carouselPage.Children.Add(new Carousel3());
+            carouselPage.Children.Add(new Carousel4());
+            MainPage = new NavigationPage(carouselPage);
         }
 
         protected override async void OnInitialized()
