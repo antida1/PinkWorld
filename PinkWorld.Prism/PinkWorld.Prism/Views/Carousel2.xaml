@@ -4,9 +4,7 @@
              x:Class="PinkWorld.Prism.Views.Carousel2">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Carousel 2"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image Source="C2.png"></Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
