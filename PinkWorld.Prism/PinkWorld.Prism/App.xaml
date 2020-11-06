@@ -6,10 +6,17 @@
              x:Class="PinkWorld.Prism.App">
   <Application.Resources>
 
+
+      
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <themes:LightTheme />
+                
             </ResourceDictionary.MergedDictionaries >
+
+
+            <!--URL -->
+            <x:String x:Key="UrlAPI">https://pinkworld.azurewebsites.netw</x:String>
         </ResourceDictionary>
 
     <!-- Application resource dictionary -->

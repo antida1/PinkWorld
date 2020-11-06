@@ -1,10 +1,7 @@
 ﻿using Prism.Navigation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
-using System.Text;
 using Xamarin.Forms.Internals;
 
 namespace PinkWorld.Prism.ViewModels
@@ -21,6 +18,9 @@ namespace PinkWorld.Prism.ViewModels
         public BaseViewModel(INavigationService navigationService)
         {
             this.navigationService = navigationService;
+
+
+
         }
         #region Event handler
 
@@ -43,6 +43,9 @@ namespace PinkWorld.Prism.ViewModels
         }
 
         #endregion
+
+
+
 
 
     }
