@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PinkWorld.Web.Data.Entities
+namespace PinkWorld.Web.Models
 {
-    public class Site
+    public class SiteViewModel
     {
         public int Id { get; set; }
 
@@ -25,26 +24,22 @@ namespace PinkWorld.Web.Data.Entities
         [Required]
         [Display(Name = "Bussiness Name")]
         public string BussinessName { get; set; }
-
         [Display(Name = "Image")]
         public Guid ImageId { get; set; }
 
-        //TODO change path local
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44357/images/no-image.png"
             : $"https://pinkworld.blob.core.windows.net/sites/{ImageId}";
 
-        
+        [Display(Name = "Image")]
+        public IFormFile ImageFile { get; set; }
+
         public double Latitude { get; set; }
 
-        public double Longitude{ get; set; }
+        public double Longitude { get; set; }
 
-        [JsonIgnore]
-        [NotMapped]
         public int IdCity { get; set; }
 
-        [JsonIgnore]
-        public City City { get; set; }
     }
 }

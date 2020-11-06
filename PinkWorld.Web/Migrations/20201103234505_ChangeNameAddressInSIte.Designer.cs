@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinkWorld.Web.Data;
 
 namespace PinkWorld.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20201103234505_ChangeNameAddressInSIte")]
+    partial class ChangeNameAddressInSIte
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,10 +213,6 @@ namespace PinkWorld.Web.Migrations
 
                     b.Property<Guid>("ImageId");
 
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -227,11 +225,7 @@ namespace PinkWorld.Web.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("Name", "CityId")
-                        .IsUnique()
-                        .HasFilter("[CityId] IS NOT NULL");
-
-                    b.ToTable("Sites");
+                    b.ToTable("Site");
                 });
 
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.User", b =>
@@ -377,8 +371,7 @@ namespace PinkWorld.Web.Migrations
                 {
                     b.HasOne("PinkWorld.Web.Data.Entities.City", "City")
                         .WithMany("Sites")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CityId");
                 });
 
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.User", b =>

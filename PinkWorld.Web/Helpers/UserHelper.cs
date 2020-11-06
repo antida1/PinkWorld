@@ -85,6 +85,7 @@ namespace PinkWorld.Web.Helpers
                 Document = model.Document,
                 Email = model.Username,
                 FirstName = model.FirstName,
+                SecondName = model.SecondName,
                 LastName = model.LastName,
                 ImageId = imageId,
                 PhoneNumber = model.PhoneNumber,

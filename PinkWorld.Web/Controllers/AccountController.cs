@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using PinkWorld.Common.Enums;
 using PinkWorld.Common.Responses;
 using PinkWorld.Web.Data;
@@ -8,6 +10,7 @@ using PinkWorld.Web.Data.Entities;
 using PinkWorld.Web.Helpers;
 using PinkWorld.Web.Models;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,16 +23,17 @@ namespace PinkWorld.Web.Controllers
         private readonly ICombosHelper _combosHelper;
         private readonly IBlobHelper _blobHelper;
         private readonly IMailHelper _mailHelper;
+        private IHostingEnvironment _env;
 
         public AccountController(DataContext context, IUserHelper userHelper, ICombosHelper combosHelper,
-        IBlobHelper blobHelper, IMailHelper mailHelper
-)
+        IBlobHelper blobHelper, IMailHelper mailHelper, IHostingEnvironment env)
         {
             _context = context;
             _userHelper = userHelper;
             _combosHelper = combosHelper;
             _blobHelper = blobHelper;
             _mailHelper = mailHelper;
+            _env = env;
         }
 
         public IActionResult Login()
@@ -117,9 +121,27 @@ namespace PinkWorld.Web.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                Response response = _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                    $"To allow the user, " +
-                    $"plase click in this link:</br><p><a href = \"{tokenLink}\">Confirm Email</a></p>");
+                var webRoot = _env.WebRootPath; //get wwwroot Folder
+                var pathToFile = webRoot
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Templates"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "EmailTemplate"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Confirm_Account_Registration.html";
+                var builder = new BodyBuilder();
+                using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+                {
+
+                    builder.HtmlBody = SourceReader.ReadToEnd();
+
+                }
+                string messageBody = string.Format(builder.HtmlBody,
+                        model.FirstName,
+                        tokenLink
+                        );
+
+                Response response = _mailHelper.SendMail(model.Username, "Email confirmation", messageBody);
                 if (response.IsSuccess)
                 {
                     ViewBag.Message = "The instructions to allow your user has been sent to email.";

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PinkWorld.Web.Data;
 using PinkWorld.Web.Data.Entities;
+using PinkWorld.Web.Helpers;
+using PinkWorld.Web.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,10 +15,15 @@ namespace PinkWorld.Web.Controllers
     public class CountriesController : Controller
     {
         private readonly DataContext _context;
+        private readonly IBlobHelper _blobHelper;
+        private readonly ISiteHelper _siteHelper;
 
-        public CountriesController(DataContext context)
+        public CountriesController(DataContext context, IBlobHelper blobHelper,
+            ISiteHelper siteHelper)
         {
             _context = context;
+            _blobHelper = blobHelper;
+            _siteHelper = siteHelper;
         }
 
         // GET: Countries
@@ -38,6 +45,7 @@ namespace PinkWorld.Web.Controllers
             Country country = await _context.Countries
                 .Include(c => c.Departments)
                 .ThenInclude(d => d.Cities)
+                .ThenInclude(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (country == null)
             {
@@ -287,6 +295,7 @@ namespace PinkWorld.Web.Controllers
 
             Department department = await _context.Departments
                 .Include(d => d.Cities)
+                .ThenInclude(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
@@ -308,6 +317,7 @@ namespace PinkWorld.Web.Controllers
 
             Department department = await _context.Departments
                 .Include(d => d.Cities)
+                .ThenInclude(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
@@ -436,6 +446,7 @@ namespace PinkWorld.Web.Controllers
             }
 
             City city = await _context.Cities
+                .Include(c => c.Sites)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (city == null)
             {
@@ -448,6 +459,206 @@ namespace PinkWorld.Web.Controllers
             return RedirectToAction($"{nameof(DetailsDepartment)}/{department.Id}");
         }
 
+        public async Task<IActionResult> DetailsCity(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            City city = await _context.Cities
+                .Include(c => c.Sites)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            Department department = await _context.Departments.FirstOrDefaultAsync(d => d.Cities.FirstOrDefault(c => c.Id == city.Id) != null);
+            city.IdDepartment = department.Id;
+            return View(city);
+        }
+
+        public async Task<IActionResult> AddSite(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            City city = await _context.Cities.FindAsync(id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            SiteViewModel model = new SiteViewModel { IdCity = city.Id };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddSite(SiteViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid imageId = Guid.Empty;
+
+                if (model.ImageFile != null)
+                {
+                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "sites");
+                }
+
+                Site site = await _siteHelper.AddSiteAsync(model, imageId);
+                   
+                if (site == null)
+                {
+                    ModelState.AddModelError(string.Empty, "El sitio no puede estar vacío");
+                    return View(model);
+                }
+
+                City city = await _context.Cities
+                    .Include(c => c.Sites)
+                    .FirstOrDefaultAsync(s => s.Id == site.IdCity);
+                
+                if (city == null)
+                {
+                    return NotFound();
+                }
+
+                try
+                {
+                    site.Id = 0;
+                    city.Sites.Add(site);
+                    _context.Update(city);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"{nameof(DetailsCity)}/{city.Id}");
+
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "There are a record with the same name.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+            }
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> EditSite(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Site site = await _context.Sites.FindAsync(id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            SiteViewModel model = new SiteViewModel
+            {
+                Address = site.Address,
+                Name = site.Name,
+                Phone = site.Phone,
+                ImageId = site.ImageId,
+                Id = site.Id,
+                BussinessName = site.BussinessName,
+                Latitude = site.Latitude,
+                Longitude = site.Longitude  
+            };
+
+            City city = await _context.Cities.FirstOrDefaultAsync(c => c.Sites.FirstOrDefault(s => s.Id == model.Id) != null);
+            model.IdCity = city.Id;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditSite(SiteViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid imageId = model.ImageId;
+
+                if (model.ImageFile != null)
+                {
+                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "sites");
+                }
+
+                Site site = await _context.Sites.FindAsync(model.Id);
+                if (site == null)
+                {
+                    return NotFound();
+                }
+
+                site.Name = model.Name;
+                site.Phone = model.Phone;
+                site.Address = model.Address;
+                site.BussinessName = model.BussinessName;
+                site.ImageId = imageId;
+                site.Latitude = model.Latitude;
+                site.Longitude = model.Longitude;
+                site.IdCity = model.IdCity;               
+
+                try
+                {
+                    _context.Update(site);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"{nameof(DetailsCity)}/{site.IdCity}");
+
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "There are a record with the same name.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> DeleteSite(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Site site = await _context.Sites
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (site == null)
+            {
+                return NotFound();
+            }
+
+            City city = await _context.Cities.FirstOrDefaultAsync(c => c.Sites.FirstOrDefault(s => s.Id == site.Id) != null);
+            _context.Sites.Remove(site);
+            await _context.SaveChangesAsync();
+            return RedirectToAction($"{nameof(DetailsCity)}/{city.Id}");
+        }
 
     }
 }

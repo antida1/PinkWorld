@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PinkWorld.Web.Data.Entities
+namespace PinkWorld.Web.Models
 {
-    public class Image
+    public class ImageViewModel
     {
         public int Id { get; set; }
 
@@ -14,5 +15,8 @@ namespace PinkWorld.Web.Data.Entities
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44357/images/no-image.png"
             : $"https://pinkworld.blob.core.windows.net/pictures/{ImageId}";
+
+        [Display(Name = "Image")]
+        public IFormFile ImageFile { get; set; }
     }
 }
