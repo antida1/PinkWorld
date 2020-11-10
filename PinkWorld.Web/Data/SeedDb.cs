@@ -1,6 +1,7 @@
 ﻿using PinkWorld.Common.Enums;
 using PinkWorld.Web.Data.Entities;
 using PinkWorld.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace PinkWorld.Web.Data
             await CheckCountriesAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Admin", "Admin", "Admin", "admin@yopmail.com", "3169874152", "calle Sol", UserType.Admin);
+            await CheckQuizzesAsync();
         }
 
         private async Task CheckRolesAsync()
@@ -69,8 +71,33 @@ namespace PinkWorld.Web.Data
 
             return user;
         }
-
-
+        private async Task CheckQuizzesAsync()
+        {
+            if (!_context.Quizzes.Any())
+            {
+                _context.Quizzes.Add(new Quiz
+                {
+                    Date = new DateTime(),
+                    Questions = new List<Questionnaire>
+                    {           
+                        new Questionnaire
+                        {
+                            Question = "¿Hay alguna secreción cuando presiona los pesones?"
+                        },
+                        new Questionnaire
+                        {
+                            Question = "¿Nota cambios en la textura de la piel?"
+                        },
+                        new Questionnaire
+                        {
+                            Question = "¿tiene hoyuelos en el seno?"
+                        }
+                    },
+                    User = _context.Users.FirstOrDefault()
+                });
+                await _context.SaveChangesAsync();
+            }
+        }
 
         private async Task CheckCountriesAsync()
         {
@@ -86,7 +113,20 @@ namespace PinkWorld.Web.Data
                             Name = "Antioquia",
                             Cities = new List<City>
                             {
-                                new City { Name = "Medellín" },
+                                new City {
+                                    Name = "Medellín" ,
+                                    Sites = new List<Site>{
+                                        new Site
+                                        {
+                                            Name = "Clinica de Cancerología Las Américas",
+                                            Address = "Cra 70 # 13-41",
+                                            Phone = "3409393",
+                                            BussinessName = "Instituto de Cancerología Las Américas",
+                                            Latitude = 6.214238,
+                                            Longitude =75.593906
+                                        }
+                                    }
+                                },
                                 new City { Name = "Envigado" },
                                 new City { Name = "Itagüí" }
                             }

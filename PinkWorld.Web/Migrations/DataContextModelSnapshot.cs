@@ -193,13 +193,62 @@ namespace PinkWorld.Web.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid>("ImageId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Questionnaire", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<int?>("QuizId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
+
+                    b.ToTable("Questionnaires");
+                });
+
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Quiz", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("UserId1");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Quizzes");
+                });
+
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.Site", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasMaxLength(100);
 
@@ -210,6 +259,10 @@ namespace PinkWorld.Web.Migrations
                     b.Property<int?>("CityId");
 
                     b.Property<Guid>("ImageId");
+
+                    b.Property<double>("Latitude");
+
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -223,7 +276,11 @@ namespace PinkWorld.Web.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Site");
+                    b.HasIndex("Name", "CityId")
+                        .IsUnique()
+                        .HasFilter("[CityId] IS NOT NULL");
+
+                    b.ToTable("Sites");
                 });
 
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.User", b =>
@@ -365,11 +422,26 @@ namespace PinkWorld.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Questionnaire", b =>
+                {
+                    b.HasOne("PinkWorld.Web.Data.Entities.Quiz")
+                        .WithMany("Questions")
+                        .HasForeignKey("QuizId");
+                });
+
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Quiz", b =>
+                {
+                    b.HasOne("PinkWorld.Web.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+                });
+
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.Site", b =>
                 {
                     b.HasOne("PinkWorld.Web.Data.Entities.City", "City")
                         .WithMany("Sites")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.User", b =>

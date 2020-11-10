@@ -15,7 +15,7 @@ namespace PinkWorld.Web.Data.Entities
 
         [MaxLength(100, ErrorMessage = "the field {0} must contain less than {1} characteres.")]
         [Required]
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         [MaxLength(50, ErrorMessage = "the field {0} must contain less than {1} characteres.")]
         [Required]
@@ -32,12 +32,13 @@ namespace PinkWorld.Web.Data.Entities
         //TODO change path local
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44357/images/no-image.png"
+            ? $"https://pinkworld.azurewebsites.net/images/no-image.png"
             : $"https://pinkworld.blob.core.windows.net/sites/{ImageId}";
 
-        public double Latitude;
+        
+        public double Latitude { get; set; }
 
-        public double Longitude;
+        public double Longitude{ get; set; }
 
         [JsonIgnore]
         [NotMapped]

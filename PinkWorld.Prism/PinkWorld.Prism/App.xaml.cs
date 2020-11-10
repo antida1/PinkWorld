@@ -5,9 +5,8 @@ using PinkWorld.Prism.Views;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
-using PinkWorld.Prism.Views.Forms;
 using Syncfusion.Licensing;
-using PinkWorld.Prism.ViewModels.Forms;
+using PinkWorld.Common.Services;
 
 namespace PinkWorld.Prism
 {
@@ -28,20 +27,20 @@ namespace PinkWorld.Prism
 
         protected override async void OnInitialized()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MzQ1NTUxQDMxMzgyZTMzMmUzMEl4dk5FQTczMmNOaFljNzRldS9QWm5mK3VyVXdWRzdzVU03enk3b3ZMUUk9");
+            SyncfusionLicenseProvider.RegisterLicense("MzQ5MTM1QDMxMzgyZTMzMmUzMGRLcWRTT0MzWlBzS3A3UThScFpCUnRuSERuV21GYVVjZlcvMUVJSHRVL009");
+
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/SimpleLoginPage");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(ListQuizzesPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
-
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<AddProfilePage, BaseViewModel>();
-            containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
 
         }
     }

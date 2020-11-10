@@ -1,0 +1,43 @@
+﻿@model PinkWorld.Web.Models.SiteViewModel
+
+<div class="form-group">
+    <label asp-for="Name" class="control-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Address" class="control-label"></label>
+    <input asp-for="Address" class="form-control" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Phone" class="control-label"></label>
+    <input asp-for="Phone" class="form-control" />
+    <span asp-validation-for="Phone" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="BussinessName" class="control-label"></label>
+    <input asp-for="BussinessName" class="form-control" />
+    <span asp-validation-for="BussinessName" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="ImageFile" class="control-label"></label>
+    <input asp-for="ImageFile" class="form-control" type="file" />
+    <span asp-validation-for="ImageFile" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Latitude" class="control-label"></label>
+    <input type="number" asp-for="Latitude" class="form-control" />
+    <span asp-validation-for="Latitude" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Longitude" class="control-label"></label>
+    <input  type="number" asp-for="Longitude" class="form-control" />
+    <span asp-validation-for="Longitude" class="text-danger"></span>
+</div>

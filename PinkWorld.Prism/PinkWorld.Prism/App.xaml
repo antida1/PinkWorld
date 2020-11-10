@@ -1,18 +1,46 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
-             xmlns:themes = "clr-namespace:PinkWorld.Prism.Themes;assembly=PinkWorld.Prism"
              x:Class="PinkWorld.Prism.App">
   <Application.Resources>
 
+    <!-- Application resource dictionary -->
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <themes:LightTheme />
-            </ResourceDictionary.MergedDictionaries >
+
+            <!-- Parameters -->
+            <x:String x:Key="UrlAPI">https://pinkworld.azurewebsites.net</x:String>
+
+            <!-- Colors -->
+            <Color x:Key="ColorBackground">#F2BBCF</Color>
+            <Color x:Key="ColorPrimary">#F20574</Color>
+            <Color x:Key="ColorSecondary">#F2A2C0</Color>
+            <Color x:Key="ColorDanger">#F213A4</Color>
+            <Color x:Key="ColorAccent">#F213A4</Color>
+            <Color x:Key="ColorFont">#A65158</Color>
+            <Color x:Key="ColorFontInverse">#F2BBCF</Color>
+
+            <!-- Styles -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorPrimary}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorFont}" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorSecondary}" />
+            </Style>
+
+            <Style x:Key="DangerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorDanger}" />
+            </Style>
+
         </ResourceDictionary>
 
-    <!-- Application resource dictionary -->
-
-  </Application.Resources>
+    </Application.Resources>
 </prism:PrismApplication>
