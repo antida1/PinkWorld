@@ -13,7 +13,7 @@ namespace PinkWorld.Web.Data.Entities
         //TODO change path local
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44357/images/no-image.png"
+            ? $"https://pinkworld.azurewebsites.net/images/no-image.png"
             : $"https://pinkworld.blob.core.windows.net/pictures/{ImageId}";
 
     }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace PinkWorld.Web.Data.Entities
         public DateTime DateLocal => Date.ToLocalTime();
 
         public ICollection<Questionnaire> Questions { get; set; }
+
+        [DisplayName("Questions Number")]
+        public int QuestionsNumber => Questions == null ? 0 : Questions.Count;
 
         [JsonIgnore]
         [NotMapped]
