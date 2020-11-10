@@ -19,7 +19,10 @@ namespace PinkWorld.Web.Data
         public DbSet<Site> Sites { get; set; }
 
         public DbSet<Questionnaire> Questionnaires { get; set; }
+
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<Quiz> Quizzes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,7 +51,7 @@ namespace PinkWorld.Web.Data
                 sit.HasIndex("Name", "CityId").IsUnique();
                 sit.HasOne(c => c.City).WithMany(c => c.Sites).OnDelete(DeleteBehavior.Cascade);
             });
-
+           
         }
     }
 }
