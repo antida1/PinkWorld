@@ -3,6 +3,7 @@ using PinkWorld.Common.Helpers;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
+using PinkWorld.Prism.Views;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -95,6 +96,8 @@ namespace PinkWorld.Prism.ViewModels
             TokenResponse token = (TokenResponse)response.Result;
             Settings.Token = JsonConvert.SerializeObject(token);
 
+            await _navigationService.NavigateAsync(nameof(ListQuizzesPage));
+            Password = string.Empty;
 
         }
 

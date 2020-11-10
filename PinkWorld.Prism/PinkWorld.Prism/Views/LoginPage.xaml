@@ -20,7 +20,7 @@
                 <StackLayout>
                     <Image HeightRequest="150"
                            Margin="20"
-                           Source="web_hi_res_512"/>
+                           Source="Icon_pink"/>
 
                     <StackLayout VerticalOptions="CenterAndExpand">
                         <inputLayout:SfTextInputLayout Hint="Email" 

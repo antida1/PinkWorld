@@ -12,16 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Carousel1.xaml.cs">
-      <DependentUpon>Carousel1.xaml</DependentUpon>
     <ProjectReference Include="..\..\PinkWorld.Common\PinkWorld.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
+    <Compile Update="Views\Carousel1.xaml.cs">
+      <DependentUpon>Carousel1.xaml</DependentUpon>    
     </Compile>
   </ItemGroup>
 
@@ -47,8 +43,9 @@
     <EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\SimpleLoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+	<EmbeddedResource Update="Views\Forms\SimpleLoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	</EmbeddedResource>
     <EmbeddedResource Update="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>

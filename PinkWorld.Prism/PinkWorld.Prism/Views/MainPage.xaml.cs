@@ -1,6 +1,8 @@
-﻿namespace PinkWorld.Prism.Views
+﻿using Xamarin.Forms;
+
+namespace PinkWorld.Prism.Views
 {
-    public partial class MainPage
+    public partial class MainPage : ContentPage
     {
         public MainPage()
         {

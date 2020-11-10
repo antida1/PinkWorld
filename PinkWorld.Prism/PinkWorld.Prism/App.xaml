@@ -12,13 +12,13 @@
             <x:String x:Key="UrlAPI">https://pinkworld.azurewebsites.net</x:String>
 
             <!-- Colors -->
-            <Color x:Key="ColorBackground">#F2BBCF</Color>
+            <Color x:Key="ColorBackground">#Fbeaf0</Color>
             <Color x:Key="ColorPrimary">#F20574</Color>
             <Color x:Key="ColorSecondary">#F2A2C0</Color>
             <Color x:Key="ColorDanger">#F213A4</Color>
             <Color x:Key="ColorAccent">#F213A4</Color>
             <Color x:Key="ColorFont">#A65158</Color>
-            <Color x:Key="ColorFontInverse">#F2BBCF</Color>
+            <Color x:Key="ColorFontInverse">#Fbeaf0</Color>
 
             <!-- Styles -->
             <Style TargetType="Button">

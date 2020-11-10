@@ -31,7 +31,7 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(LoginPage)}");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
