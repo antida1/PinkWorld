@@ -13,15 +13,7 @@
 
   <ItemGroup>
     <Compile Update="Views\Carousel1.xaml.cs">
-      <DependentUpon>Carousel1.xaml</DependentUpon>
-    <ProjectReference Include="..\..\PinkWorld.Common\PinkWorld.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Resources\Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
+      <DependentUpon>Carousel1.xaml</DependentUpon>    
     </Compile>
   </ItemGroup>
 
