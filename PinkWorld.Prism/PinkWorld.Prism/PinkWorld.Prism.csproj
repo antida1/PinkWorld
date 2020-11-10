@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Carousel1.xaml.cs">
+      <DependentUpon>Carousel1.xaml</DependentUpon>
     <ProjectReference Include="..\..\PinkWorld.Common\PinkWorld.Common.csproj" />
   </ItemGroup>
 
@@ -24,6 +26,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Carousel1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Carousel2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Carousel3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Carousel4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\AddProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\SimpleLoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     <EmbeddedResource Update="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
