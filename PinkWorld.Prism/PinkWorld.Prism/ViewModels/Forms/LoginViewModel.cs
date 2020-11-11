@@ -7,12 +7,17 @@ using PinkWorld.Prism.Views;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
-namespace PinkWorld.Prism.ViewModels
+namespace PinkWorld.Prism.ViewModels.Forms
 {
-    public class LoginPageViewModel : ViewModelBase
-    {
 
+    [Preserve(AllMembers = true)]
+    public class LoginViewModel : ViewModelBase
+    {
+        #region Fields
+
+        private string email;
         private string _pageReturn;
         private bool _isRunning;
         private bool _isEnabled;
@@ -21,7 +26,10 @@ namespace PinkWorld.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
 
-        public LoginPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
+        private bool isInvalidEmail;
+
+
+        public LoginViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;
@@ -29,6 +37,14 @@ namespace PinkWorld.Prism.ViewModels
             IsEnabled = true;
 
         }
+
+        #endregion
+
+        #region Property
+
+        /// <summary>
+        /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.
+        /// </summary>
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
@@ -101,6 +117,25 @@ namespace PinkWorld.Prism.ViewModels
 
         }
 
+        public bool IsInvalidEmail
+        {
+            get
+            {
+                return this.isInvalidEmail;
+            }
 
+            set
+            {
+                if (this.isInvalidEmail == value)
+                {
+                    return;
+                }
+
+                this.isInvalidEmail = value;
+                
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,12 +1,14 @@
+using PinkWorld.Common.Services;
+using PinkWorld.Prism.ViewModels;
+using PinkWorld.Prism.ViewModels.Forms;
+using PinkWorld.Prism.Views;
+using PinkWorld.Prism.Views.Forms;
 using Prism;
 using Prism.Ioc;
-using PinkWorld.Prism.ViewModels;
-using PinkWorld.Prism.Views;
-using Xamarin.Essentials.Interfaces;
-using Xamarin.Essentials.Implementation;
-using Xamarin.Forms;
 using Syncfusion.Licensing;
-using PinkWorld.Common.Services;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
+using Xamarin.Forms;
 
 namespace PinkWorld.Prism
 {
@@ -31,7 +33,7 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(SimpleLoginPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -41,7 +43,8 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
-            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
+
 
         }
     }
