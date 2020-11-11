@@ -1,5 +1,4 @@
-﻿using PinkWorld.Prism.Views;
-using PinkWorld.Prism.Views.Forms;
+﻿using PinkWorld.Prism.Views.Catalog;
 using Prism.Commands;
 using Prism.Navigation;
 
@@ -30,7 +29,7 @@ namespace PinkWorld.Prism.ViewModels
 
         private async void InitAsync()
         {
-            await _navigationService.NavigateAsync(nameof(SimpleLoginPage));
+            await _navigationService.NavigateAsync(nameof(NavigationTravelPage));
         }
     }
 }

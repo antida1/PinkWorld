@@ -17,10 +17,10 @@
 
             <!-- Colors -->
             <Color x:Key="ColorBackground">#Fbeaf0</Color>
-            <Color x:Key="ColorPrimary">#F20574</Color>
+            <Color x:Key="ColorPrimary">#F2A2C0</Color>
             <Color x:Key="ColorSecondary">#F2A2C0</Color>
-            <Color x:Key="ColorDanger">#F213A4</Color>
-            <Color x:Key="ColorAccent">#F213A4</Color>
+            <Color x:Key="ColorDanger">#F2A2C0</Color>
+            <Color x:Key="ColorAccent">#F2A2C0</Color>
             <Color x:Key="ColorFont">#A65158</Color>
             <Color x:Key="ColorFontInverse">#Fbeaf0</Color>
 

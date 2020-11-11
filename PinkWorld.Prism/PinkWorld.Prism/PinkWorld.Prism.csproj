@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.3.0.47" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
@@ -44,6 +48,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\NavigationTravelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -55,6 +65,12 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListQuizzesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ArticleTileTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

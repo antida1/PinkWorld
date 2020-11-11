@@ -1,7 +1,9 @@
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.ViewModels;
+using PinkWorld.Prism.ViewModels.Catalog;
 using PinkWorld.Prism.ViewModels.Forms;
 using PinkWorld.Prism.Views;
+using PinkWorld.Prism.Views.Catalog;
 using PinkWorld.Prism.Views.Forms;
 using Prism;
 using Prism.Ioc;
@@ -33,7 +35,7 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(SimpleLoginPage)}");
+            await NavigationService.NavigateAsync(nameof(NavigationTravelPage));
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -44,8 +46,13 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<NavigationTravelPage, NavigationTravelPageViewModel>();
+
+
 
 
         }
+
+        public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";
     }
 }
