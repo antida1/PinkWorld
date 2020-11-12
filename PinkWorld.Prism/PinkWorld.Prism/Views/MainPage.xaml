@@ -1,26 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>    
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PinkWorld.Prism.Views.MainPage"
              Title="{Binding Title}">
-
-    <AbsoluteLayout>
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
-                     AbsoluteLayout.LayoutFlags="All" 
-                     Padding="5">
-            <ScrollView>
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Image Source="CMain.png"></Image>
-                </StackLayout>
-            </ScrollView>
-            <StackLayout VerticalOptions="EndAndExpand">
-                <Button Command="{Binding InitCommand}" 
-                        IsEnabled="{Binding IsEnabled}"
-                        Text="Login"/>
-            </StackLayout>            
+    <StackLayout Padding="5">
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Image Source="CMain.png"></Image>
         </StackLayout>
-    </AbsoluteLayout>
+    </StackLayout>
 
 </ContentPage>

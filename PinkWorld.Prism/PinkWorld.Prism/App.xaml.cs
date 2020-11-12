@@ -16,13 +16,7 @@ namespace PinkWorld.Prism
             : base(initializer)
         {
 
-            CarouselPage carouselPage = new CarouselPage();
-            carouselPage.Children.Add(new MainPage());
-            carouselPage.Children.Add(new Carousel());
-            carouselPage.Children.Add(new Carousel2());
-            carouselPage.Children.Add(new Carousel3());
-            carouselPage.Children.Add(new Carousel4());
-            MainPage = new NavigationPage(carouselPage);
+          
         }
 
         protected override async void OnInitialized()
@@ -31,7 +25,15 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
+            CarouselPage carouselPage = new CarouselPage();
+            carouselPage.Children.Add(new MainPage());
+            carouselPage.Children.Add(new Carousel());
+            carouselPage.Children.Add(new Carousel2());
+            carouselPage.Children.Add(new Carousel3());
+            carouselPage.Children.Add(new Carousel4());
+            MainPage = new NavigationPage(carouselPage);
+
+            await NavigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(MainPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -40,9 +42,12 @@ namespace PinkWorld.Prism
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShowQuizzesHistoryPage, ShowQuizzesHistoryPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
-
+            containerRegistry.RegisterForNavigation<PinkWorldMasterDetailPage, PinkWorldMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterSelfExaminationPage, RegisterSelfExaminationPageViewModel>();
+            containerRegistry.RegisterForNavigation<ViewStadisticsPage, ViewStadisticsPageViewModel>();
+            containerRegistry.RegisterForNavigation<SeeMapsPage, SeeMapsPageViewModel>();
         }
     }
 }

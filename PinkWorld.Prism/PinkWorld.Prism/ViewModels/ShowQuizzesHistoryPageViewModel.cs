@@ -1,6 +1,7 @@
 ﻿using PinkWorld.Common.Models;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
+using PinkWorld.Prism.Helpers;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -11,7 +12,7 @@ using Xamarin.Essentials;
 
 namespace PinkWorld.Prism.ViewModels
 {
-    public class ListQuizzesPageViewModel : ViewModelBase
+    public class ShowQuizzesHistoryPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
@@ -34,11 +35,11 @@ namespace PinkWorld.Prism.ViewModels
         }
 
 
-        public ListQuizzesPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
+        public ShowQuizzesHistoryPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Quizzes";
+            Title = Languages.Quizzes;
             LoadQuizzesAsync();
         }
 
@@ -59,7 +60,7 @@ namespace PinkWorld.Prism.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection!", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
