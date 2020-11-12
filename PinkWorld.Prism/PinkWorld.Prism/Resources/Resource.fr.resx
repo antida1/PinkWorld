@@ -126,4 +126,34 @@
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Chargement...</value>
+  </data>
+  <data name="Quizzes" xml:space="preserve">
+    <value>Les sondages</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modifier l'utilisateur</value>
+  </data>
+  <data name="ShowQuizzesHistory" xml:space="preserve">
+    <value>Afficher l’histoire des quiz!</value>
+  </data>
+  <data name="RegisterSelfExamination" xml:space="preserve">
+    <value>Enregistrez l’auto-examen!</value>
+  </data>
+  <data name="ViewStadistics" xml:space="preserve">
+    <value>Voir les stades!</value>
+  </data>
+  <data name="SeeMaps" xml:space="preserve">
+    <value>Voir les cartes - centres de diagnostic et le soutien de la communauté!</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
 </root>

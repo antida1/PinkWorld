@@ -1,4 +1,5 @@
-﻿using PinkWorld.Prism.Views;
+﻿using PinkWorld.Prism.Helpers;
+using PinkWorld.Prism.Views;
 using Prism.Commands;
 using Prism.Navigation;
 
@@ -14,7 +15,7 @@ namespace PinkWorld.Prism.ViewModels
             : base(navigationService)
         {
             _navigationService = navigationService;
-            Title = "Main Page";
+            Title = Languages.Main;
             IsEnabled = true;
 
         }

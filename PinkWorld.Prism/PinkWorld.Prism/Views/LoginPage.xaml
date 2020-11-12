@@ -7,6 +7,7 @@
              ios:Page.UseSafeArea="true"
          	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
              x:Class="PinkWorld.Prism.Views.LoginPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
@@ -69,7 +70,7 @@
                 	                   HorizontalOptions="Center"
                 	                   TextColor="{StaticResource ColorAccent}"
                 	                   IsBusy="{Binding IsRunning}"
-                	                   Title="Loading..."
+                	                   Title="{i18n:Translate Loading}"
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />

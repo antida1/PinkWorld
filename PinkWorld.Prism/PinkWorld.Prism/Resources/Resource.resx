@@ -126,4 +126,34 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Quizzes" xml:space="preserve">
+    <value>Quizzes</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modify user</value>
+  </data>
+  <data name="ShowQuizzesHistory" xml:space="preserve">
+    <value>Show quizzes history</value>
+  </data>
+  <data name="RegisterSelfExamination" xml:space="preserve">
+    <value>Register self-examination</value>
+  </data>
+  <data name="ViewStadistics" xml:space="preserve">
+    <value>View stadistics</value>
+  </data>
+  <data name="SeeMaps" xml:space="preserve">
+    <value>See maps - diagnostic centers and community support</value>
+  </data>
+  <data name="Main" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
 </root>

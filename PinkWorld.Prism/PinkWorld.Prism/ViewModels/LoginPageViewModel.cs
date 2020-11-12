@@ -3,6 +3,7 @@ using PinkWorld.Common.Helpers;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
+using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.Views;
 using Prism.Commands;
 using Prism.Navigation;
@@ -25,7 +26,7 @@ namespace PinkWorld.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Login";
+            Title = Languages.Login;
             IsEnabled = true;
 
         }
@@ -71,7 +72,7 @@ namespace PinkWorld.Prism.ViewModels
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert("Error", "You don't have conexion", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
@@ -96,7 +97,7 @@ namespace PinkWorld.Prism.ViewModels
             TokenResponse token = (TokenResponse)response.Result;
             Settings.Token = JsonConvert.SerializeObject(token);
 
-            await _navigationService.NavigateAsync(nameof(ListQuizzesPage));
+            await _navigationService.NavigateAsync(nameof(ShowQuizzesHistoryPage));
             Password = string.Empty;
 
         }
