@@ -86,5 +86,95 @@ namespace PinkWorld.Prism.Resources {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        public static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify user.
+        /// </summary>
+        public static string ModifyUser {
+            get {
+                return ResourceManager.GetString("ModifyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quizzes.
+        /// </summary>
+        public static string Quizzes {
+            get {
+                return ResourceManager.GetString("Quizzes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register self-examination.
+        /// </summary>
+        public static string RegisterSelfExamination {
+            get {
+                return ResourceManager.GetString("RegisterSelfExamination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See maps - diagnostic centers and community support.
+        /// </summary>
+        public static string SeeMaps {
+            get {
+                return ResourceManager.GetString("SeeMaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show quizzes history.
+        /// </summary>
+        public static string ShowQuizzesHistory {
+            get {
+                return ResourceManager.GetString("ShowQuizzesHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View stadistics.
+        /// </summary>
+        public static string ViewStadistics {
+            get {
+                return ResourceManager.GetString("ViewStadistics", resourceCulture);
+            }
+        }
     }
 }

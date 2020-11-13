@@ -4,6 +4,7 @@ using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Views;
+using PinkWorld.Prism.Views.Catalog;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -15,7 +16,6 @@ namespace PinkWorld.Prism.ViewModels.Forms
     [Preserve(AllMembers = true)]
     public class LoginViewModel : ViewModelBase
     {
-        #region Fields
 
         private string email;
         private string _pageReturn;
@@ -38,7 +38,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         }
 
-        #endregion
+ 
 
         #region Property
 
@@ -112,7 +112,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             TokenResponse token = (TokenResponse)response.Result;
             Settings.Token = JsonConvert.SerializeObject(token);
 
-            await _navigationService.NavigateAsync(nameof(ListQuizzesPage));
+            await _navigationService.NavigateAsync(nameof(NavigationTravelPage));
             Password = string.Empty;
 
         }

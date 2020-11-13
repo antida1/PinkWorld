@@ -9,7 +9,8 @@
     xmlns:converter="clr-namespace:PinkWorld.Prism.Converters"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:local="clr-namespace:PinkWorld.Prism.Views.Forms"
-    xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
+    xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" 
     BackgroundColor="{DynamicResource Gray-200}"
     NavigationPage.HasNavigationBar="False">
 
@@ -77,7 +78,7 @@
                         FontFamily="{StaticResource Montserrat-Medium}"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"
-                        Text="Let's get to work"
+                        Text=""
                         TextColor="{DynamicResource Gray-800}" />
 
                     <!--  Entry to get email ID from user  -->
@@ -197,11 +198,10 @@
                 	                   HorizontalOptions="Center"
                 	                   TextColor="{StaticResource ColorAccent}"
                 	                   IsBusy="{Binding IsRunning}"
-                	                   Title="Loading..."
+                	                   Title="{i18n:Translate Loading}"
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
-
         </AbsoluteLayout>
     </ContentPage.Content>
 

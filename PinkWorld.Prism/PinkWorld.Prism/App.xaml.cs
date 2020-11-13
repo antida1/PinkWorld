@@ -20,13 +20,7 @@ namespace PinkWorld.Prism
             : base(initializer)
         {
 
-            CarouselPage carouselPage = new CarouselPage();
-            carouselPage.Children.Add(new MainPage());
-            carouselPage.Children.Add(new Carousel());
-            carouselPage.Children.Add(new Carousel2());
-            carouselPage.Children.Add(new Carousel3());
-            carouselPage.Children.Add(new Carousel4());
-            MainPage = new NavigationPage(carouselPage);
+          
         }
 
         protected override async void OnInitialized()
@@ -35,7 +29,11 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync(nameof(NavigationTravelPage));
+
+
+
+            await NavigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -43,14 +41,10 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<NavigationTravelPage, NavigationTravelPageViewModel>();
-
-
-
-
+            containerRegistry.RegisterForNavigation<PinkWorldMasterDetailPage, PinkWorldMasterDetailPageViewModel>();
         }
 
         public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";

@@ -2,9 +2,9 @@
 
 namespace PinkWorld.Prism.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class PinkWorldMasterDetailPage : MasterDetailPage
     {
-        public MainPage()
+        public PinkWorldMasterDetailPage()
         {
             InitializeComponent();
         }

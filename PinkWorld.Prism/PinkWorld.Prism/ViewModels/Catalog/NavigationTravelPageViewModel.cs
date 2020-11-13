@@ -25,10 +25,11 @@ namespace PinkWorld.Prism.ViewModels.Catalog
         private Command selectionCommand;
 
         private int selectedIndex;
+        private readonly INavigationService _navigationService;
 
         #endregion
 
-       
+
 
         /// <summary>
         /// Initializes a new instance for the <see cref="NavigationTravelPageViewModel" /> class.
@@ -46,26 +47,26 @@ namespace PinkWorld.Prism.ViewModels.Catalog
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C1.png",
-                    Place = "First step",
-                    Details = "Japan’s most famous, holy mountain dominates the landscape of three prefectures—when you can see it. Fuji-san is shy and often obscured by clouds, but take the slow train through Shizuoka, or go shopping at the grand Gotemba outlet mall and you might get lucky."
+                    Place = "First Step"
+
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C2.png",
-                    Place = "London",
-                    Details = "The bustling capital of the United Kingdom has enough historical landmarks, architectural beauties, and free museums to keep even the pickiest traveler occupied for days, if not weeks."
+                    Place = "Second Step",
+                   
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C3.png",
-                    Place = "Singapore",
-                    Details = "At only 725 sq. km., Singapore is one of the smallest countries in the world, but it packs a major punch in terms of reasons to visit."
+                    Place = "Third Step",
+
                 },
                  new Model
                 {
                     ImagePath = App.BaseImageUrl + "C4.png",
-                    Place = "Singapore",
-                    Details = "At only 725 sq. km., Singapore is one of the smallest countries in the world, but it packs a major punch in terms of reasons to visit."
+                    Place = "Four Step"
+                  
                 }
             };
 
@@ -73,21 +74,21 @@ namespace PinkWorld.Prism.ViewModels.Catalog
             {
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Venice, Italy",
-                    Details = "Venice is arguably the most beautiful city in the world. The world seems to agree, sending 30 million tourists to walk its cobblestone streets, cross its ornate bridges, and sail down its elegant canals every year."
+                    ImagePath = App.BaseImageUrl + "P1.jpeg",
+                    Place = "Take care, Examine",
+                    Details = "The test collects cells with a fine needle, analyzes the results and generates a diagnosis."
                 },
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Santorini, Greece",
-                    Details = "The result of volcanic eruptions that devastated ancient civilizations, Santorini, locally known as Thira, is now a tourism must-do. The white buildings and blue roofs of Oia town are an icon of Greece itself."
+                    ImagePath = App.BaseImageUrl + "P2.png",
+                    Place = "Together we are stronger",
+                    Details = "Breast cancer affects both men and women."
                 },
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Maya Beach, Thailand",
-                    Details = "The crystal blue waters of this cove were made famous by the 2000 movie The Beach. Surrounded by dramatic cliffs and a white-sand beach, Maya Beach is a popular day trip."
+                    ImagePath =  App.BaseImageUrl + "P3.jpeg",
+                    Place ="Breast cancer and the pandemic",
+                    Details = "The pandemic one more obstacle"
                 },
                 new Model
                 {
@@ -102,7 +103,9 @@ namespace PinkWorld.Prism.ViewModels.Catalog
                 new Model
                 {
                     ImagePath = "",
-                    Place = "Maya Bay, Thailand"
+                    Place = "Maya Bay, Thailand",
+                    
+                    
                 },
                 new Model
                 {
@@ -125,6 +128,7 @@ namespace PinkWorld.Prism.ViewModels.Catalog
             this.TopDestinationsCommand = new Command(this.TopDestinationsClicked);
             this.BestPlacesCommand = new Command(this.BestPlacesClicked);
             this.ItemSelectedCommand = new Command(this.ItemSelected);
+            _navigationService = navigationService;
         }
 
        

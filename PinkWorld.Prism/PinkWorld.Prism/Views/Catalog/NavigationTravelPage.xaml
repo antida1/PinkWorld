@@ -117,7 +117,7 @@
                 </rotator:SfRotator>
 
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="16,23,8,10">
-                    <Label Text="TOP DESTINATIONS" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label Text="NEWS" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
                     <buttons:SfButton Text="VIEW ALL" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
                                       FontFamily="{DynamicResource Montserrat-SemiBold}" VerticalOptions="StartAndExpand"
                                       TextColor="{StaticResource Link}" HorizontalOptions="End" />
@@ -175,7 +175,7 @@
                                     <Label Grid.Row="1" 
                                            Margin="16,0,16,4"
                                            FontFamily="{StaticResource Montserrat-SemiBold}"
-                                           FontSize="16"
+                                           FontSize="15"
                                            HorizontalOptions="StartAndExpand"
                                            LineHeight="{OnPlatform Android=1.5, Default=-1}"
                                            Text="{Binding Place}"
@@ -212,7 +212,7 @@
                 </listView:SfListView>
 
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="16,0,8,10">
-                    <Label Text="BEST PLACES" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label Text="HISTORIES" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
                     <buttons:SfButton Text="VIEW ALL" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
                                       FontFamily="{DynamicResource Montserrat-SemiBold}"
                                       TextColor="{StaticResource Link}" HorizontalOptions="End" />
@@ -248,7 +248,8 @@
                                            BackgroundColor="{DynamicResource Gray-White}"
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand"
-                                           Source="{Binding ImagePath}" />
+                                           Source="{Binding ImagePath}"
+                                           />
 
                                     <!--  Place name  -->
                                     <Label Margin="8,0,0,12"
