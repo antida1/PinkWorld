@@ -5,6 +5,7 @@ using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
+using PinkWorld.Prism.Views.Forms;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -18,6 +19,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
     {
 
         private string email;
+        private DelegateCommand _forgotpassword;
         private string _pageReturn;
         private bool _isRunning;
         private bool _isEnabled;
@@ -47,6 +49,10 @@ namespace PinkWorld.Prism.ViewModels.Forms
         /// </summary>
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
+
+
+        public DelegateCommand ForgotPassword => _forgotpassword ?? (_forgotpassword = new DelegateCommand(ForgotPasswordPage));
+
 
         public bool IsRunning
         {
@@ -111,8 +117,9 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             TokenResponse token = (TokenResponse)response.Result;
             Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.IsLogin = true;
 
-            await _navigationService.NavigateAsync(nameof(NavigationTravelPage));
+            await _navigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
             Password = string.Empty;
 
         }
@@ -135,6 +142,15 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 
             }
         }
+
+
+        private async void ForgotPasswordPage()
+        {
+
+            await _navigationService.NavigateAsync(nameof(SimpleForgotPasswordPage));
+           
+        }
+
 
         #endregion
     }

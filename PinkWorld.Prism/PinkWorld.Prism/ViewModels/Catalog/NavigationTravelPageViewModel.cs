@@ -1,5 +1,8 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
+using System;
 using System.Collections.ObjectModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Model = PinkWorld.Prism.Models.Catalog.Travel;
@@ -21,6 +24,8 @@ namespace PinkWorld.Prism.ViewModels.Catalog
         private ObservableCollection<Model> bestPlaces;
 
         private Command addFavouriteCommand;
+
+        private DelegateCommand _link;
 
         private Command selectionCommand;
 
@@ -102,25 +107,24 @@ namespace PinkWorld.Prism.ViewModels.Catalog
             {
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Maya Bay, Thailand",
+                    ImagePath = App.BaseImageUrl + "Afiche-01-483x690.jpg",
+                   
                     
+                },
+                new Model
+                {
+                    ImagePath = App.BaseImageUrl + "C9.jpeg",
                     
                 },
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Madrid, Spain"
+                    ImagePath = App.BaseImageUrl + "C10.jpg",
+                    
                 },
                 new Model
                 {
-                    ImagePath = "",
-                    Place = "Venice, Italy"
-                },
-                new Model
-                {
-                    ImagePath ="",
-                    Place = "Santorini, Greece"
+                    ImagePath = App.BaseImageUrl + "C11.jpg",
+                    
                 },
             };
 
@@ -242,6 +246,9 @@ namespace PinkWorld.Prism.ViewModels.Catalog
         /// </summary>
         public Command ItemSelectedCommand { get; set; }
 
+
+        public DelegateCommand LinkCommand => _link ?? (_link = new DelegateCommand(ItemSelected));
+
         /// <summary>
         /// Gets or sets the command that will be executed when the favourite button is clicked.
         /// </summary>
@@ -299,9 +306,10 @@ namespace PinkWorld.Prism.ViewModels.Catalog
         /// Invoked when an item is selected.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ItemSelected(object obj)
+        private async void ItemSelected()
         {
-            // Do something
+            var uri = new Uri("https://www.bbc.com/mundo/noticias-54571220");
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
         /// <summary>

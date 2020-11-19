@@ -12,9 +12,9 @@
     xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
     xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" 
     BackgroundColor="{DynamicResource Gray-200}"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="True">
 
-
+   
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -111,7 +111,7 @@
                         Text="FORGOT PASSWORD?"
                         TextColor="{DynamicResource Gray-800}">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
+                                <TapGestureRecognizer Command="{Binding ForgotPassword}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
                         </Label.GestureRecognizers>
                     </Label>
 
@@ -191,7 +191,7 @@
             </StackLayout>
             
         </ScrollView>
-            <busyindicator:SfBusyIndicator AnimationType="DoubleCircle" 
+            <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
                 	                   BackgroundColor="Transparent"

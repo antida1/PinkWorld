@@ -1,10 +1,13 @@
 using PinkWorld.Common.Services;
+using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.ViewModels;
 using PinkWorld.Prism.ViewModels.Catalog;
 using PinkWorld.Prism.ViewModels.Forms;
+using PinkWorld.Prism.ViewModels.Transaction;
 using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
 using PinkWorld.Prism.Views.Forms;
+using PinkWorld.Prism.Views.Transaction;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.Licensing;
@@ -20,7 +23,7 @@ namespace PinkWorld.Prism
             : base(initializer)
         {
 
-          
+
         }
 
         protected override async void OnInitialized()
@@ -40,11 +43,15 @@ namespace PinkWorld.Prism
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<NavigationTravelPage, NavigationTravelPageViewModel>();
             containerRegistry.RegisterForNavigation<PinkWorldMasterDetailPage, PinkWorldMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleForgotPasswordPage, ForgotPasswordViewModel>();
+            containerRegistry.RegisterForNavigation<PaymentSuccessPage, PaymentViewModel>();
+
         }
 
         public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";

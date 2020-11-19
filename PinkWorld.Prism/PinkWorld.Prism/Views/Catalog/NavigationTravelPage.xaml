@@ -5,16 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:controls="clr-namespace:PinkWorld.Prism.Controls"
              xmlns:converter="clr-namespace:PinkWorld.Prism.Converters"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Catalog"
              xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
              x:Class="PinkWorld.Prism.Views.Catalog.NavigationTravelPage"
              x:Name="navigationTravelPage"
              BackgroundColor="{DynamicResource Gray-White}"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="True">
+
+
+
+
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -25,19 +27,12 @@
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
-
-    <ContentPage.Content>
-        <ScrollView>
+    
+    <ScrollView>
             <StackLayout Spacing="0">
 
-                <Grid HeightRequest="64">
-
-                    
-          
-
-                    <!--  Navigation travel page title  -->
+            <Grid HeightRequest="64">
+                <!--  Navigation travel page title  -->
                     <Label FontFamily="{StaticResource Montserrat-Medium}"
                            FontSize="16"
                            HorizontalOptions="Center"
@@ -212,10 +207,11 @@
                 </listView:SfListView>
 
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="16,0,8,10">
-                    <Label Text="HISTORIES" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
-                    <buttons:SfButton Text="VIEW ALL" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
+                    <Label Text="ALL IN ONE" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <buttons:SfButton Text="KNOW MORE" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
                                       FontFamily="{DynamicResource Montserrat-SemiBold}"
-                                      TextColor="{StaticResource Link}" HorizontalOptions="End" />
+                                      TextColor="{StaticResource Link}" HorizontalOptions="End" 
+                                      Command="{Binding LinkCommand}"/>
                 </Grid>
 
                 <listView:SfListView Margin="8,0,0,0"
@@ -277,6 +273,8 @@
                 </listView:SfListView>
 
             </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+        
+    </ScrollView>
+   
+   
 </ContentPage>

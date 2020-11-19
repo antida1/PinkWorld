@@ -8,6 +8,7 @@ namespace PinkWorld.Prism.Views
         public ListQuizzesPage()
         {
             InitializeComponent();
+   
         }
     }
 }

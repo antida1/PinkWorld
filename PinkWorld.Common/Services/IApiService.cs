@@ -9,5 +9,7 @@ namespace PinkWorld.Common.Services
         Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller);
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, TokenRequest request);
 
+        Task<Response> RecoverPasswordAsync(string urlBase, string servicePrefix, string controller, EmailRequest emailRequest);
+
     }
 }

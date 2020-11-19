@@ -10,7 +10,9 @@ namespace PinkWorld.Prism.Views.Forms
         public SimpleLoginPage()
         {
             InitializeComponent();
-           
+          
         }
+
+        
     }
 }
