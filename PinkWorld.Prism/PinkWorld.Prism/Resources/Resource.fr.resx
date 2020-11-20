@@ -121,7 +121,7 @@
     <value>Accepter</value>
   </data>
   <data name="ConnectionError" xml:space="preserve">
-    <value>Vérifiez la connexion Internet</value>
+    <value>Vérifiez la connexion Internet!</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
@@ -139,16 +139,16 @@
     <value>Modifier l'utilisateur</value>
   </data>
   <data name="ShowQuizzesHistory" xml:space="preserve">
-    <value>Afficher l’histoire des quiz!</value>
+    <value>Afficher l’histoire des quiz</value>
   </data>
   <data name="RegisterSelfExamination" xml:space="preserve">
-    <value>Enregistrez l’auto-examen!</value>
+    <value>Enregistrez l’auto-examen</value>
   </data>
   <data name="ViewStadistics" xml:space="preserve">
-    <value>Voir les stades!</value>
+    <value>Voir les stades</value>
   </data>
   <data name="SeeMaps" xml:space="preserve">
-    <value>Voir les cartes - centres de diagnostic et le soutien de la communauté!</value>
+    <value>Voir les cartes - centres de diagnostic et le soutien de la communauté</value>
   </data>
   <data name="Main" xml:space="preserve">
     <value>Principal</value>

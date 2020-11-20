@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<<<<<<< HEAD
                   xmlns:prism="http://prismlibrary.com"
+=======
+                  xmlns:prism="http://prismlibrary.com" xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+>>>>>>> Mateo
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="PinkWorld.Prism.Views.PinkWorldMasterDetailPage">
 
     <MasterDetailPage.Master>
+<<<<<<< HEAD
         <ContentPage BackgroundColor="{StaticResource ColorSecondary}" 
                      IconImageSource="ic_action_menu"
                      Title="{Binding Name}">
@@ -35,10 +40,40 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.Column="0"
+=======
+        <ContentPage Title="Menu">
+            <Grid BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Image Source="C5.png" Aspect="AspectFill" />
+                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <custom:CircleImage Grid.Row="3" Source="{Binding User.ImageFullPath}"  WidthRequest="125" HeightRequest="125" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                        <Label Text="{Binding User.FullName}" TextColor="Black" FontSize="Large" />
+                    </StackLayout>
+                </Grid>
+                <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="Default" BackgroundColor="Transparent" ItemsSource="{Binding Menus}" HasUnevenRows="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectMenuCommand}"/>
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0"
+>>>>>>> Mateo
                                     	   HeightRequest="32"
                                            Margin="5"
                                     	   Source="{Binding Icon}"
                                     	   WidthRequest="32"/>
+<<<<<<< HEAD
                                     <Label Grid.Column="1"
                                            FontAttributes="Bold"
                                    	       VerticalOptions="Center"
@@ -53,3 +88,21 @@
     </MasterDetailPage.Master>
 
 </MasterDetailPage>
+=======
+                                        <Label Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"
+                                           TextColor="Black"
+                                           Text="{Binding Title}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>
+>>>>>>> Mateo

@@ -38,9 +38,10 @@ namespace PinkWorld.Prism.Helpers
         public static string ViewStadistics => Resource.ViewStadistics;
 
         public static string SeeMaps => Resource.SeeMaps;
-        public static string Main => Resource.Main;
-        public static string Menu => Resource.Menu;
 
+        public static string Main => Resource.Main;
+
+        public static string Menu => Resource.Menu;
     }
 
 }

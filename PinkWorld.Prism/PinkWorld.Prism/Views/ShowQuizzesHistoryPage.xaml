@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-              xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
-             x:Class="PinkWorld.Prism.Views.ShowQuizzesHistoryPage"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="PinkWorld.Prism.Views.ListQuizzesPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
     <AbsoluteLayout>
@@ -39,16 +38,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-        <busyindicator:SfBusyIndicator AnimationType="SlicedCircle" 
-                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
-                	                   AbsoluteLayout.LayoutFlags="All"
-                	                    BackgroundColor="{StaticResource ColorAccent}"
-                	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorFontInverse}"
-                	                   IsBusy="{Binding IsRunning}"
-                	                   Title="{i18n:Translate Loading}"
-                	                   VerticalOptions="Center"
-                	                   ViewBoxWidth="80"
-                	                   ViewBoxHeight="80" />
+
+
     </AbsoluteLayout>
 </ContentPage>

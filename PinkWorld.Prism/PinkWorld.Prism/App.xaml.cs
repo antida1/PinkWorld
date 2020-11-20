@@ -1,12 +1,19 @@
+using PinkWorld.Common.Services;
+using PinkWorld.Prism.Helpers;
+using PinkWorld.Prism.ViewModels;
+using PinkWorld.Prism.ViewModels.Catalog;
+using PinkWorld.Prism.ViewModels.Forms;
+using PinkWorld.Prism.ViewModels.Transaction;
+using PinkWorld.Prism.Views;
+using PinkWorld.Prism.Views.Catalog;
+using PinkWorld.Prism.Views.Forms;
+using PinkWorld.Prism.Views.Transaction;
 using Prism;
 using Prism.Ioc;
-using PinkWorld.Prism.ViewModels;
-using PinkWorld.Prism.Views;
-using Xamarin.Essentials.Interfaces;
-using Xamarin.Essentials.Implementation;
-using Xamarin.Forms;
 using Syncfusion.Licensing;
-using PinkWorld.Common.Services;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
+using Xamarin.Forms;
 
 namespace PinkWorld.Prism
 {
@@ -16,7 +23,6 @@ namespace PinkWorld.Prism
             : base(initializer)
         {
 
-          
         }
 
         protected override async void OnInitialized()
@@ -25,29 +31,30 @@ namespace PinkWorld.Prism
 
             InitializeComponent();
 
-            CarouselPage carouselPage = new CarouselPage();
-            carouselPage.Children.Add(new MainPage());
-            carouselPage.Children.Add(new Carousel());
-            carouselPage.Children.Add(new Carousel2());
-            carouselPage.Children.Add(new Carousel3());
-            carouselPage.Children.Add(new Carousel4());
-            MainPage = new NavigationPage(carouselPage);
 
-            await NavigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(MainPage)}");
+
+
+            await NavigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
+
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<ShowQuizzesHistoryPage, ShowQuizzesHistoryPageViewModel>();
-            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<NavigationTravelPage, NavigationTravelPageViewModel>();
             containerRegistry.RegisterForNavigation<PinkWorldMasterDetailPage, PinkWorldMasterDetailPageViewModel>();
-            containerRegistry.RegisterForNavigation<RegisterSelfExaminationPage, RegisterSelfExaminationPageViewModel>();
-            containerRegistry.RegisterForNavigation<ViewStadisticsPage, ViewStadisticsPageViewModel>();
-            containerRegistry.RegisterForNavigation<SeeMapsPage, SeeMapsPageViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleForgotPasswordPage, ForgotPasswordViewModel>();
+            containerRegistry.RegisterForNavigation<PaymentSuccessPage, PaymentViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleSignUpPage, SignUpPageViewModel>();
+
         }
+
+        public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";
     }
 }

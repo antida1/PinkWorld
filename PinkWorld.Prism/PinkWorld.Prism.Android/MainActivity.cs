@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+
 using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.Droid;
@@ -15,9 +16,8 @@ namespace PinkWorld.Prism.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+         
             base.OnCreate(savedInstanceState);
-
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));

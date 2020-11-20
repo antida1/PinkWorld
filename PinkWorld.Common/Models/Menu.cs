@@ -1,4 +1,9 @@
-﻿namespace PinkWorld.Common.Models
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PinkWorld.Common.Models
+
 {
     public class Menu
     {
@@ -10,4 +15,5 @@
 
         public bool IsLoginRequired { get; set; }
     }
+
 }

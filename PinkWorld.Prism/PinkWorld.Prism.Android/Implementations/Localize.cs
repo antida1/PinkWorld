@@ -1,11 +1,13 @@
-﻿using PinkWorld.Common.Helpers;
+using PinkWorld.Common.Helpers;﻿
 using PinkWorld.Prism.Helpers;
 using System.Globalization;
 using System.Threading;
 using Xamarin.Forms;
 
+
 [assembly: Dependency(typeof(PinkWorld.Prism.Droid.Implementations.Localize))]
 namespace PinkWorld.Prism.Droid.Implementations
+
 {
     public class Localize : ILocalize
     {
@@ -83,3 +85,6 @@ namespace PinkWorld.Prism.Droid.Implementations
     }
 
 }
+
+
+

@@ -1,22 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:themes = "clr-namespace:PinkWorld.Prism.Themes;assembly=PinkWorld.Prism"
              x:Class="PinkWorld.Prism.App">
   <Application.Resources>
 
     <!-- Application resource dictionary -->
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:LightTheme />
+            </ResourceDictionary.MergedDictionaries >
 
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://pinkworld.azurewebsites.net</x:String>
 
             <!-- Colors -->
             <Color x:Key="ColorBackground">#Fbeaf0</Color>
-            <Color x:Key="ColorPrimary">#F20574</Color>
+            <Color x:Key="ColorPrimary">#F2A2C0</Color>
             <Color x:Key="ColorSecondary">#F2A2C0</Color>
-            <Color x:Key="ColorDanger">#F213A4</Color>
-            <Color x:Key="ColorAccent">#F213A4</Color>
+            <Color x:Key="ColorDanger">#F2A2C0</Color>
+            <Color x:Key="ColorAccent">#F2A2C0</Color>
             <Color x:Key="ColorFont">#A65158</Color>
             <Color x:Key="ColorFontInverse">#Fbeaf0</Color>
 
