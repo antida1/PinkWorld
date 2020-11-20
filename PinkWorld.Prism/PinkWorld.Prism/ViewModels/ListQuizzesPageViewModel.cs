@@ -12,7 +12,7 @@ using Xamarin.Essentials;
 
 namespace PinkWorld.Prism.ViewModels
 {
-    public class ShowQuizzesHistoryPageViewModel : ViewModelBase
+    public class ListQuizzesPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
@@ -35,7 +35,7 @@ namespace PinkWorld.Prism.ViewModels
         }
 
 
-        public ShowQuizzesHistoryPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
+        public ListQuizzesPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;

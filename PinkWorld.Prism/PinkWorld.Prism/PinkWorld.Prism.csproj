@@ -1,112 +1,100 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Images\PaymentSuccess.svg" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Images\PaymentSuccess.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Images\PaymentSuccess.svg" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Images\PaymentSuccess.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
-    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.3.0.47" />
-    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
-    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
-    <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.3.0.47" />
+		<PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+		<PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+		<PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
+		<PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\PinkWorld.Common\PinkWorld.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\PinkWorld.Common\PinkWorld.Common.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Resources\Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\Resource.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resource.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ListQuizzesPage.xaml.cs">
+		  <DependentUpon>ListQuizzesPage.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Themes\LightTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Catalog\NavigationTravelPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Catalog\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\SimpleForgotPasswordPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\SimpleLoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\SimpleSignUpPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Forms\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\RegisterSelfExaminationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SeeMapsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ShowQuizzesHistoryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ModifyUserPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PinkWorldMasterDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewStadisticsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PinkWorldMasterDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\ArticleTileTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transaction\PaymentSuccessPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Transaction\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Themes\LightTheme.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Resource.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Catalog\NavigationTravelPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Catalog\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Forms\SimpleForgotPasswordPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Forms\SimpleLoginPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Forms\SimpleSignUpPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Forms\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\ListQuizzesPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PinkWorldMasterDetailPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Templates\ArticleTileTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Templates\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Transaction\PaymentSuccessPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Transaction\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

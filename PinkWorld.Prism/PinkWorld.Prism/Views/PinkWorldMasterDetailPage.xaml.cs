@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿
-using Xamarin.Forms;
-=======
 ﻿using Xamarin.Forms;
->>>>>>> Mateo
+
 
 namespace PinkWorld.Prism.Views
 {
@@ -11,10 +7,6 @@ namespace PinkWorld.Prism.Views
     {
         public PinkWorldMasterDetailPage()
         {
-<<<<<<< HEAD
-            IsGestureEnabled = false;
-=======
->>>>>>> Mateo
             InitializeComponent();
         }
     }
