@@ -51,6 +51,7 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<PinkWorldMasterDetailPage, PinkWorldMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleForgotPasswordPage, ForgotPasswordViewModel>();
             containerRegistry.RegisterForNavigation<PaymentSuccessPage, PaymentViewModel>();
+            containerRegistry.RegisterForNavigation<SimpleSignUpPage, SignUpPageViewModel>();
 
         }
 

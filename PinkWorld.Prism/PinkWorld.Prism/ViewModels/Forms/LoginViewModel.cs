@@ -27,6 +27,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
         private DelegateCommand _loginCommand;
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
+        private DelegateCommand _signup;
 
         private bool isInvalidEmail;
 
@@ -40,7 +41,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         }
 
- 
+
 
         #region Property
 
@@ -50,8 +51,9 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
-
         public DelegateCommand ForgotPassword => _forgotpassword ?? (_forgotpassword = new DelegateCommand(ForgotPasswordPage));
+
+        public DelegateCommand SignUpCommand => _signup ?? (_signup = new DelegateCommand(SignUpPage));
 
 
         public bool IsRunning
@@ -119,7 +121,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             Settings.Token = JsonConvert.SerializeObject(token);
             Settings.IsLogin = true;
 
-            await _navigationService.NavigateAsync($"{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
+            await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
             Password = string.Empty;
 
         }
@@ -139,7 +141,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 }
 
                 this.isInvalidEmail = value;
-                
+
             }
         }
 
@@ -148,7 +150,15 @@ namespace PinkWorld.Prism.ViewModels.Forms
         {
 
             await _navigationService.NavigateAsync(nameof(SimpleForgotPasswordPage));
-           
+
+        }
+
+
+        private async void SignUpPage()
+        {
+
+            await _navigationService.NavigateAsync(nameof(SimpleSignUpPage));
+
         }
 
 

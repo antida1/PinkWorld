@@ -16,7 +16,7 @@
                     <Image Source="C5.png" Aspect="AspectFill" />
                     <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <custom:CircleImage Grid.Row="3" Source="{Binding User.ImageFullPath}"  WidthRequest="125" HeightRequest="125" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                        <Label Text="{Binding User.FullName}" TextColor="White" FontSize="Large" />
+                        <Label Text="{Binding User.FullName}" TextColor="Black" FontSize="Large" />
                     </StackLayout>
                 </Grid>
                 <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
@@ -39,7 +39,7 @@
                                     	   WidthRequest="32"/>
                                         <Label Grid.Column="1"
                                            FontAttributes="Bold"
-                                   	       VerticalOptions="Center"
+                                           VerticalOptions="Center"
                                            TextColor="Black"
                                            Text="{Binding Title}"/>
                                     </Grid>
