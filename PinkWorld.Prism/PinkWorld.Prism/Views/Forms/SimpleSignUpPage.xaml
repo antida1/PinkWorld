@@ -11,10 +11,14 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:local="clr-namespace:PinkWorld.Prism.Views.Forms"
-    xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms"
-    Title="Sign Up"
+    xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms" 
+    xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" 
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
+    Title="{Binding Title}"
     BackgroundColor="{DynamicResource Gray-200}"
     NavigationPage.HasNavigationBar="True">
+
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -29,170 +33,259 @@
 
 
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="Center">
-            <ScrollView.VerticalOptions>
-                <OnIdiom
-                    x:TypeArguments="LayoutOptions"
-                    Default="CenterAndExpand"
-                    Phone="FillAndExpand" />
-            </ScrollView.VerticalOptions>
+        <StackLayout>
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
 
-            <StackLayout
-                Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
-                                                             PhoneLandscape='150,32',
-                                                             TabletPortrait='200,50',
-                                                             TabletLandscape='300,50',
-                                                             Desktop='30'}"
-                Spacing="0"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="{OnPlatform Default='-1',
-                                          UWP='350'}">
                 <StackLayout
-                    HorizontalOptions="Center"
-                    Spacing="24"
-                    VerticalOptions="CenterAndExpand">
-
-                    <!--  Label to display the title of this page  -->
-                    <Label
-                        FontFamily="{StaticResource Montserrat-SemiBold}"
-                        FontSize="20"
+                    Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+                    <StackLayout
                         HorizontalOptions="Center"
-                        Style="{StaticResource LabelStyle}"
-                        Text="Sign Up"
-                        TextColor="{DynamicResource Gray-900}" />
+                        Spacing="24"
+                        VerticalOptions="CenterAndExpand">
 
-                    <!--  Label to display the description of this page  -->
-                    <Label
-                        x:Name="text"
-                        Margin="0,-16,0,8"
-                        FontFamily="{StaticResource Montserrat-Medium}"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource LabelStyle}"
-                        Text="Create an account to start doing more"
-                        TextColor="{DynamicResource Gray-800}" />
-
-                    <ffimageloading:CachedImage Aspect="AspectFit"
-                                                Source="{Binding Image}" 
-                                                CacheDuration= "50"
-                                                HeightRequest="150"
-                                                Margin="5"
-                                                RetryCount= "3"
-                                                RetryDelay= "600">
-                        <ffimageloading:CachedImage.Transformations>
-                            <fftransformations:CircleTransformation />
-                        </ffimageloading:CachedImage.Transformations>
-                        <ffimageloading:CachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
-                        </ffimageloading:CachedImage.GestureRecognizers>
-                    </ffimageloading:CachedImage>
-
-
-
-                    <!--  Entry to get username from user  -->
-                    <border:SfBorder
-                        BackgroundColor="{DynamicResource Gray-White}"
-                        BorderColor="{Binding Source={x:Reference NameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource SfBorderStyle}">
-                        <control:BorderlessEntry
-                            x:Name="NameEntry"
-                            Placeholder="Name"
-                            PlaceholderColor="{DynamicResource Gray-700}"
-                            Style="{StaticResource EntryStyle}"
-                            Text="{Binding Name}"
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding Title}"
                             TextColor="{DynamicResource Gray-900}" />
-                    </border:SfBorder>
 
-                    <border:SfBorder
-                        BackgroundColor="{DynamicResource Gray-White}"
-                        BorderColor="{Binding Source={x:Reference SecondNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource SfBorderStyle}">
-                        <control:BorderlessEntry
-                            x:Name="SecondNameEntry"
-                            Placeholder="Second Name"
-                            PlaceholderColor="{DynamicResource Gray-700}"
-                            Style="{StaticResource EntryStyle}"
-                            Text="{Binding SecondName}"
-                            TextColor="{DynamicResource Gray-900}" />
-                    </border:SfBorder>
+                        <!--  Label to display the description of this page  -->
+                        <Label
+                            x:Name="text"
+                            Margin="0,-16,0,8"
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{i18n:Translate CreateAccount}"
+                            TextColor="{DynamicResource Gray-800}" />
 
-                    <!--  Entry to get email ID from user  -->
-                    <border:SfBorder
-                        BackgroundColor="{DynamicResource Gray-White}"
-                        BorderColor="{Binding Source={x:Reference EmailEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource SfBorderStyle}">
-                        <control:BorderlessEntry
-                            x:Name="EmailEntry"
-                            Placeholder="Email"
-                            PlaceholderColor="{DynamicResource Gray-700}"
-                            Style="{StaticResource EntryStyle}"
-                            Text="{Binding Email}"
-                            TextColor="{DynamicResource Gray-900}" />
-                    </border:SfBorder>
+                        <custom:CircleImage Grid.Row="3" Source="{Binding Image}"  WidthRequest="125" HeightRequest="125" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
-                    <!--  Entry to get password from user  -->
-                    <border:SfBorder
-                        BackgroundColor="{DynamicResource Gray-White}"
-                        BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource SfBorderStyle}">
-                        <control:BorderlessEntry
-                            x:Name="PasswordEntry"
-                            IsPassword="true"
-                            Placeholder="Password"
-                            PlaceholderColor="{DynamicResource Gray-700}"
-                            Style="{StaticResource EntryStyle}"
-                            Text="{Binding Password}"
-                            TextColor="{DynamicResource Gray-900}" />
-                    </border:SfBorder>
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference DocumentEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="DocumentEntry"
+                                Placeholder="{i18n:Translate DocumentPlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.Document}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
 
-                    <!--  Entry to get the confirm password from user  -->
-                    <border:SfBorder
-                        BackgroundColor="{DynamicResource Gray-White}"
-                        BorderColor="{Binding Source={x:Reference ConfirmPasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource SfBorderStyle}">
-                        <control:BorderlessEntry
-                            x:Name="ConfirmPasswordEntry"
-                            IsPassword="true"
-                            Placeholder="Confirm Password"
-                            PlaceholderColor="{DynamicResource Gray-700}"
-                            Style="{StaticResource EntryStyle}"
-                            Text="{Binding ConfirmPassword}"
-                            TextColor="{DynamicResource Gray-900}" />
-                    </border:SfBorder>
 
-                    <!--  Sign-up button  -->
-                    <buttons:SfButton
-                        Command="{Binding SignUpCommand}"
-                        CornerRadius="20"
-                        FontFamily="{StaticResource Montserrat-SemiBold}"
-                        Style="{StaticResource SfButtonStyle}"
-                        Text="REGISTER" />
+                        <!--  Entry to get username from user  -->
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference NameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="NameEntry"
+                                Placeholder="{i18n:Translate FirstNamePlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.FirstName}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference SecondNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="SecondNameEntry"
+                                Placeholder="{i18n:Translate SecondNamePlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.SecondName}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference LastNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="LastNameEntry"
+                                Placeholder="{i18n:Translate LastNamePlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.LastName}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference AddressEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="AddressEntry"
+                                Placeholder="{i18n:Translate AddressPlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.Address}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference PhoneEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="PhoneEntry"
+                                Placeholder="{i18n:Translate PhonePlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Keyboard="Telephone"
+                                Text="{Binding User.Phone}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference CountryEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Picker 
+                                    x:Name="CountryEntry"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Countries}"
+                                    SelectedItem="{Binding Country}"
+                                    Title="{i18n:Translate CountryPlaceHolder}"/>
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference DepartmentEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Picker 
+                                    x:Name="DepartmentEntry"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Departments}"
+                                    SelectedItem="{Binding Department}"
+                                    Title="{i18n:Translate DepartmentPlaceHolder}"/>
+                        </border:SfBorder>
+
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference CityEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Picker 
+                                    x:Name="CityEntry"      
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Cities}"
+                                    SelectedItem="{Binding City}"
+                                    Title="{i18n:Translate CityPlaceHolder}"/>
+                        </border:SfBorder>
+
+                        <!--  Entry to get email ID from user  -->
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference EmailEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="EmailEntry"
+                                Placeholder="{i18n:Translate EmailPlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Keyboard="Email"
+                                Text="{Binding User.Email}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <!--  Entry to get password from user  -->
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="PasswordEntry"
+                                IsPassword="true"
+                                Placeholder="{i18n:Translate PasswordPlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.Password}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <!--  Entry to get the confirm password from user  -->
+                        <border:SfBorder
+                            BackgroundColor="{DynamicResource Gray-White}"
+                            BorderColor="{Binding Source={x:Reference ConfirmPasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            Style="{StaticResource SfBorderStyle}">
+                            <control:BorderlessEntry
+                                x:Name="ConfirmPasswordEntry"
+                                IsPassword="true"
+                                Placeholder="{i18n:Translate PasswordConfirmPlaceHolder}"
+                                PlaceholderColor="{DynamicResource Gray-700}"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding User.PasswordConfirm}"
+                                TextColor="{DynamicResource Gray-900}" />
+                        </border:SfBorder>
+
+                        <!--  Sign-up button  -->
+                        <buttons:SfButton
+                            Command="{Binding SignUpCommand}"
+                            CornerRadius="20"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="{i18n:Translate Register}" />
+                    </StackLayout>
+
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+
+
+
+                        <Label
+                            FontFamily="{StaticResource Montserrat-Medium}"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Already have an account?"
+                            TextColor="{DynamicResource Gray-800}"
+                            VerticalTextAlignment="Center" />
+
+                        <buttons:SfButton
+                            Command="{Binding LoginCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource SfFlatButtonStyle}"
+                            Text="Log In" />
+
+                    </StackLayout>
                 </StackLayout>
-
-                <StackLayout
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    Spacing="1"
-                    VerticalOptions="End">
-
-                  
-
-                    <Label
-                        FontFamily="{StaticResource Montserrat-Medium}"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource LabelStyle}"
-                        Text="Already have an account?"
-                        TextColor="{DynamicResource Gray-800}"
-                        VerticalTextAlignment="Center" />
-
-                    <buttons:SfButton
-                        Command="{Binding LoginCommand}"
-                        CornerRadius="4"
-                        Style="{StaticResource SfFlatButtonStyle}"
-                        Text="Log In" />
-
-                </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+            <busyindicator:SfBusyIndicator AnimationType="Ball" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsBusy="{Binding IsRunning}"
+                	                   Title="{i18n:Translate Loading}"
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

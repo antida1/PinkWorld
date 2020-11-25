@@ -1,7 +1,19 @@
-﻿using PinkWorld.Prism.Views.Forms;
+﻿using PinkWorld.Common.Request;
+using PinkWorld.Common.Responses;
+using PinkWorld.Common.Services;
+using PinkWorld.Prism.Helpers;
+using PinkWorld.Prism.Views.Forms;
+using Prism.Commands;
 using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using CountryResponse = PinkWorld.Common.Responses.CountryResponse;
 
 namespace PinkWorld.Prism.ViewModels.Forms
 {
@@ -12,53 +24,65 @@ namespace PinkWorld.Prism.ViewModels.Forms
     public class SignUpPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+
+        private readonly IRegexHelper _regexHelper;
+
+        private readonly IApiService _apiService;
+
         #region Fields
-
-        private string name;
-
         private string password;
 
         private string confirmPassword;
 
+        private ImageSource _image;
+
+        private UserRequest _user;
+
+        private CityResponse _city;
+
+        private ObservableCollection<CityResponse> _cities;
+
+        private DepartmentResponse _department;
+
+        private ObservableCollection<DepartmentResponse> _departments;
+
+        private CountryResponse _country;
+
+        private ObservableCollection<CountryResponse> _countries;
         #endregion
+
+        private bool _isRunning;
+
+        private bool _isEnabled;
+
+        private DelegateCommand _changeImageCommand;
+
 
         #region Constructor
 
         /// <summary>
         /// Initializes a new instance for the <see cref="SignUpPageViewModel" /> class.
         /// </summary>
-        public SignUpPageViewModel(INavigationService navigationService):base(navigationService)
+        public SignUpPageViewModel(INavigationService navigationService,
+        IRegexHelper regexHelper,
+        IApiService apiService) : base(navigationService)
         {
             this.LoginCommand = new Command(this.LoginClicked);
-            this.SignUpCommand = new Command(this.SignUpClicked);
+            this.SignUpCommand = new Command(this.SignUpClickedAsync);
             _navigationService = navigationService;
+            _regexHelper = regexHelper;
+            _apiService = apiService;
+            Title = Languages.Register;
+            Image = App.Current.Resources["UrlNoImage"].ToString();
+            IsEnabled = true;
+            User = new UserRequest();
+            LoadCountriesAsync();
+
         }
 
         #endregion
 
         #region Property
-
-        /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the name from user in the Sign Up page.
-        /// </summary>
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                if (this.name == value)
-                {
-                    return;
-                }
-
-                this.name = value;
-               
-            }
-        }
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the password from users in the Sign Up page.
@@ -104,6 +128,81 @@ namespace PinkWorld.Prism.ViewModels.Forms
             }
         }
 
+        public ImageSource Image
+        {
+            get => _image;
+            set => SetProperty(ref _image, value);
+        }
+
+        public UserRequest User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        public CountryResponse Country
+        {
+            get => _country;
+            set
+            {
+                Departments = value != null ? new ObservableCollection<DepartmentResponse>(value.Departments) : null;
+                Cities = new ObservableCollection<CityResponse>();
+                Department = null;
+                City = null;
+                SetProperty(ref _country, value);
+            }
+        }
+
+        public ObservableCollection<CountryResponse> Countries
+        {
+            get => _countries;
+            set => SetProperty(ref _countries, value);
+        }
+
+        public DepartmentResponse Department
+        {
+            get => _department;
+            set
+            {
+                Cities = value != null ? new ObservableCollection<CityResponse>(value.Cities) : null;
+                City = null;
+                SetProperty(ref _department, value);
+            }
+        }
+
+        public ObservableCollection<DepartmentResponse> Departments
+        {
+            get => _departments;
+            set => SetProperty(ref _departments, value);
+        }
+
+        public CityResponse City
+        {
+            get => _city;
+            set => SetProperty(ref _city, value);
+        }
+
+        public ObservableCollection<CityResponse> Cities
+        {
+            get => _cities;
+            set => SetProperty(ref _cities, value);
+        }
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => SetProperty(ref _isEnabled, value);
+        }
+
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ??
+        (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+
+        
         #endregion
 
         #region Command
@@ -135,10 +234,120 @@ namespace PinkWorld.Prism.ViewModels.Forms
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
+        private async void SignUpClickedAsync(object obj)
         {
-            // Do something
+            bool isValid = await ValidateDataAsync();
+            if (!isValid)
+            {
+                return;
+            }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
+                return;
+            }
+
         }
+
+        private async void LoadCountriesAsync()
+        {
+            IsRunning = true;
+            IsEnabled = false;
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
+                return;
+            }
+
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            Response response = await _apiService.GetListAsync<CountryResponse>(url, "/api", "/Countries");
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+
+            List<CountryResponse> list = (List<CountryResponse>)response.Result;
+            Countries = new ObservableCollection<CountryResponse>(list.OrderBy(c => c.Name));
+        }
+
+        private async Task<bool> ValidateDataAsync()
+        {
+            if (string.IsNullOrEmpty(User.Document))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.DocumentError, Languages.Accept);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(User.FirstName))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.FirstNameError, Languages.Accept);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(User.LastName))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.LastNameError, Languages.Accept);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(User.Address))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.AddressError, Languages.Accept);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(User.Email) || !_regexHelper.IsValidEmail(User.Email))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "Error email", Languages.Accept);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(User.PhoneNumber))
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.PhoneError, Languages.Accept);
+                return false;
+            }
+
+            if (Country == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.CountryError, Languages.Accept);
+                return false;
+            }
+
+            if (Department == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.DepartmentError, Languages.Accept);
+                return false;
+            }
+
+            if (City == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.CityError, Languages.Accept);
+                return false;
+            }
+           
+            return true;
+        }
+
+        private void ChangeImageAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
 
