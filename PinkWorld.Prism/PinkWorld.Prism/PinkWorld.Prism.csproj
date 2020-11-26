@@ -17,15 +17,16 @@
 		<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
 		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
 		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
-		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.47" />
-		<PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.3.0.47" />
-		<PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.3.0.51" />
+		<PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.3.0.51" />
+		<PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
 		<PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
 		<PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />

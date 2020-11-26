@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MimeKit;
 using PinkWorld.Common.Enums;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
@@ -13,6 +15,7 @@ using PinkWorld.Web.Helpers;
 using PinkWorld.Web.Models;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -29,14 +32,17 @@ namespace PinkWorld.Web.Controllers.API
         private readonly DataContext _context;
         private readonly IBlobHelper _blobHelper;
         private readonly IMailHelper _mailHelper;
+        private IHostingEnvironment _env;
 
-        public AccountController(IUserHelper userHelper, IConfiguration configuration, DataContext context, IBlobHelper blobHelper, IMailHelper mailHelper)
+        public AccountController(IUserHelper userHelper, IConfiguration configuration, DataContext context, IBlobHelper blobHelper,
+            IMailHelper mailHelper, IHostingEnvironment env)
         {
             _userHelper = userHelper;
             _configuration = configuration;
             _context = context;
             _blobHelper = blobHelper;
             _mailHelper = mailHelper;
+            _env = env;
         }
 
         [HttpPost]
@@ -121,7 +127,7 @@ namespace PinkWorld.Web.Controllers.API
                 return BadRequest(new Response
                 {
                     IsSuccess = false,
-                    Message = "Error003"
+                    Message = "Error002"
                 });
             }
 
@@ -132,7 +138,7 @@ namespace PinkWorld.Web.Controllers.API
                 return BadRequest(new Response
                 {
                     IsSuccess = false,
-                    Message = "Error004"
+                    Message = "Error003"
                 });
             }
 
@@ -157,7 +163,6 @@ namespace PinkWorld.Web.Controllers.API
                 ImageId = imageId,
                 UserType = UserType.User,
                 City = city
-
             };
 
             IdentityResult result = await _userHelper.AddUserAsync(user, request.Password);
@@ -176,11 +181,27 @@ namespace PinkWorld.Web.Controllers.API
                 token = myToken
             }, protocol: HttpContext.Request.Scheme);
 
-            _mailHelper.SendMail(request.Email, $"<h1>", $"<h1>Email Confirmation</h1>" +
-               $"To confirm your email please click on the link<p><a href = \"{tokenLink}\">Confirm Email</a></p>");
-                
+            var webRoot = _env.WebRootPath; //get wwwroot Folder
+            var pathToFile = webRoot
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "Templates"
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "EmailTemplate"
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "Confirm_Account_Registration.html";
+            var builder = new BodyBuilder();
+            using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+            {
 
+                builder.HtmlBody = SourceReader.ReadToEnd();
 
+            }
+            string messageBody = string.Format(builder.HtmlBody,
+                    user.FirstName,
+                    tokenLink
+                    );
+
+            _mailHelper.SendMail(request.Email, "Email confirmation", messageBody);
             return Ok(new Response { IsSuccess = true });
         }
 
