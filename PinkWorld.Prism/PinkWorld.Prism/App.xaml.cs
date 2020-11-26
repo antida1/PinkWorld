@@ -1,3 +1,4 @@
+using PinkWorld.Common.Helpers;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.ViewModels;
@@ -44,6 +45,9 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
+
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
