@@ -1,10 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-
+using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.Droid;
+using Plugin.Permissions;
 
 namespace PinkWorld.Prism.Droid
 {
@@ -18,15 +19,18 @@ namespace PinkWorld.Prism.Droid
             ToolbarResource = Resource.Layout.Toolbar;
          
             base.OnCreate(savedInstanceState);
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             new SfBusyIndicatorRenderer();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             LoadApplication(new App(new AndroidInitializer()));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

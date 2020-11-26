@@ -1,8 +1,11 @@
-﻿using PinkWorld.Common.Request;
+﻿using PinkWorld.Common.Helpers;
+using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.Views.Forms;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -28,6 +31,8 @@ namespace PinkWorld.Prism.ViewModels.Forms
         private readonly IRegexHelper _regexHelper;
 
         private readonly IApiService _apiService;
+
+        private readonly IFilesHelper _filesHelper;
 
         #region Fields
         private string password;
@@ -55,7 +60,10 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         private bool _isEnabled;
 
+        private MediaFile _file;
+        
         private DelegateCommand _changeImageCommand;
+
 
 
         #region Constructor
@@ -65,13 +73,15 @@ namespace PinkWorld.Prism.ViewModels.Forms
         /// </summary>
         public SignUpPageViewModel(INavigationService navigationService,
         IRegexHelper regexHelper,
-        IApiService apiService) : base(navigationService)
+        IApiService apiService,
+        IFilesHelper filesHelper) : base(navigationService)
         {
             this.LoginCommand = new Command(this.LoginClicked);
             this.SignUpCommand = new Command(this.SignUpClickedAsync);
             _navigationService = navigationService;
             _regexHelper = regexHelper;
             _apiService = apiService;
+            _filesHelper = filesHelper;
             Title = Languages.Register;
             Image = App.Current.Resources["UrlNoImage"].ToString();
             IsEnabled = true;
@@ -200,9 +210,10 @@ namespace PinkWorld.Prism.ViewModels.Forms
         }
 
         public DelegateCommand ChangeImageCommand => _changeImageCommand ??
-        (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+            (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
-        
+
+
         #endregion
 
         #region Command
@@ -253,6 +264,42 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 return;
             }
 
+            byte[] imageArray = null;
+            if (_file != null)
+            {
+                imageArray = _filesHelper.ReadFully(_file.GetStream());
+            }
+
+            User.ImageArray = imageArray;
+
+            User.CityId = City.Id;
+
+            string url = App.Current.Resources["UrlAPI"].ToString();            
+
+            Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account/Register", User);
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                if (response.Message == "Error002")
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error002, Languages.Accept);
+                }
+                else if (response.Message == "Error003")
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error003, Languages.Accept);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                }
+
+                return;
+            }
+
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.RegisterMessge, Languages.Accept);
+            await _navigationService.GoBackAsync();
         }
 
         private async void LoadCountriesAsync()
@@ -342,16 +389,61 @@ namespace PinkWorld.Prism.ViewModels.Forms
             return true;
         }
 
-        private void ChangeImageAsync()
+        private async void ChangeImageAsync()
         {
-            throw new NotImplementedException();
+            await CrossMedia.Current.Initialize();
+
+            string source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.PictureSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.FromCamera);
+
+            if (source == Languages.Cancel)
+            {
+                _file = null;
+                return;
+            }
+
+            if (source == Languages.FromCamera)
+            {
+                if (!CrossMedia.Current.IsCameraAvailable)
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoCameraSupported, Languages.Accept);
+                    return;
+                }
+
+                _file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoGallerySupported, Languages.Accept);
+                    return;
+                }
+
+                _file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (_file != null)
+            {
+                Image = ImageSource.FromStream(() =>
+                {
+                    System.IO.Stream stream = _file.GetStream();
+                    return stream;
+                });
+            }
         }
-
-
-
         #endregion
-
-
 
     }
 }

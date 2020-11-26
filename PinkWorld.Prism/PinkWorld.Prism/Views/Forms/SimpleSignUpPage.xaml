@@ -76,7 +76,21 @@
                             Text="{i18n:Translate CreateAccount}"
                             TextColor="{DynamicResource Gray-800}" />
 
-                        <custom:CircleImage Grid.Row="3" Source="{Binding Image}"  WidthRequest="125" HeightRequest="125" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                        <ffimageloading:CachedImage Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                            <ffimageloading:CachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                        </ffimageloading:CachedImage>
+
 
                         <border:SfBorder
                             BackgroundColor="{DynamicResource Gray-White}"
@@ -155,7 +169,7 @@
                                 PlaceholderColor="{DynamicResource Gray-700}"
                                 Style="{StaticResource EntryStyle}"
                                 Keyboard="Telephone"
-                                Text="{Binding User.Phone}"
+                                Text="{Binding User.PhoneNumber}"
                                 TextColor="{DynamicResource Gray-900}" />
                         </border:SfBorder>
 

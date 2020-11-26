@@ -288,4 +288,22 @@
   <data name="PasswordError" xml:space="preserve">
     <value>Vous devez saisir votre mot de passe !</value>
   </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Où voulez-vous prendre la photo?!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>À partir de l’appareil photo</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>À partir de la galerie</value>
+  </data>
+  <data name="NoCameraSupported" xml:space="preserve">
+    <value>L'appareil ne prend pas en charge l'accès à la caméra.</value>
+  </data>
+  <data name="NoGallerySupported" xml:space="preserve">
+    <value>L'appareil ne prend pas en charge l'accès à la galerie.</value>
+  </data>
 </root>
