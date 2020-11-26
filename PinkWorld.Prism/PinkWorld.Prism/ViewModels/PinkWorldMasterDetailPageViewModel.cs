@@ -78,7 +78,7 @@ namespace PinkWorld.Prism.ViewModels
             new Menu
             {
                 Icon = "ic_launcher_map",
-                PageName = "",
+                PageName = $"{nameof(MapPage)}",
                 Title = Languages.SeeMaps,
                 IsLoginRequired = true
             },

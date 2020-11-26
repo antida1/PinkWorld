@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkWorld.Common", "PinkWor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkWorld.Web", "PinkWorld.Web\PinkWorld.Web.csproj", "{A9180F01-9CFE-470B-98EA-CACA6DEF8B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkWorld.Prism", "PinkWorld.Prism\PinkWorld.Prism\PinkWorld.Prism.csproj", "{5ACCF9B3-3D0E-4742-ABD5-9393828FDD03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkWorld.Prism", "PinkWorld.Prism\PinkWorld.Prism\PinkWorld.Prism.csproj", "{5ACCF9B3-3D0E-4742-ABD5-9393828FDD03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkWorld.Prism.Android", "PinkWorld.Prism\PinkWorld.Prism.Android\PinkWorld.Prism.Android.csproj", "{D6EF9412-CAC0-48E4-881B-1D0A7D007FD2}"
 EndProject

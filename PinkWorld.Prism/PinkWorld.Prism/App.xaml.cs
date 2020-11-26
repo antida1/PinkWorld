@@ -43,6 +43,7 @@ namespace PinkWorld.Prism
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IGeolocatorService, GeolocatorService>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
@@ -52,6 +53,7 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<SimpleForgotPasswordPage, ForgotPasswordViewModel>();
             containerRegistry.RegisterForNavigation<PaymentSuccessPage, PaymentViewModel>();
             containerRegistry.RegisterForNavigation<SimpleSignUpPage, SignUpPageViewModel>();
+            containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
 
         }
 

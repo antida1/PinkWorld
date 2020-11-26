@@ -123,7 +123,7 @@ namespace PinkWorld.Web.Data
                                             Phone = "3409393",
                                             BussinessName = "Instituto de Cancerología Las Américas",
                                             Latitude = 6.214238,
-                                            Longitude =75.593906
+                                            Longitude =-75.593906
                                         }
                                     }
                                 },
