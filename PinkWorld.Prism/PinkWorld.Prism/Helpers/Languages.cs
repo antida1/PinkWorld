@@ -123,6 +123,65 @@ namespace PinkWorld.Prism.Helpers
 
         public static string NoGallerySupported => Resource.NoGallerySupported;
 
+        public static string WelcomePink => Resource.WelcomePink;
+
+        public static string Description1 => Resource.Description1;
+
+        public static string FightIt => Resource.FightIt;
+
+        public static string FirstStep => Resource.FirstStep;
+
+        public static string SecondStep => Resource.SecondStep;
+
+        public static string ThirdStep => Resource.ThirdStep;
+
+        public static string FourStep => Resource.FourStep;
+
+        public static string News => Resource.News;
+
+        public static string ViewAll => Resource.ViewAll;
+
+        public static string TakeCare => Resource.TakeCare;
+
+        public static string Description2 => Resource.Description2;
+
+        public static string Together => Resource.Together;
+
+        public static string Description3 => Resource.Description3;
+
+        public static string Description4 => Resource.Description4;
+
+        public static string BrestCancerPandemic => Resource.BrestCancerPandemic;
+
+        public static string AllInOne => Resource.AllInOne;
+
+        public static string KnowMore => Resource.KnowMore;
+
+        public static string ForgotPassword => Resource.ForgotPassword;
+
+        public static string CreateWithSocialMedia => Resource.CreateWithSocialMedia;
+
+        public static string LoginFacebook => Resource.LoginFacebook;
+
+        public static string NotAccount => Resource.NotAccount;
+
+        public static string Email => Resource.Email;
+
+        public static string EmailError => Resource.EmailError;
+
+        public static string EmailPlaceHolder => Resource.EmailPlaceHolder;
+
+        public static string LoginError => Resource.LoginError;
+
+        public static string Logout => Resource.Logout;
+
+        public static string AlreadyAccount => Resource.AlreadyAccount;
+
+        public static string Instructions => Resource.Instructions;
+
+        public static string Send => Resource.Send;
+
+        public static string Maps => Resource.Maps;
     }
 
 }

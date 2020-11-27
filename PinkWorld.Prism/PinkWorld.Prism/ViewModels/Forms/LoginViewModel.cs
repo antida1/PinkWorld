@@ -19,7 +19,6 @@ namespace PinkWorld.Prism.ViewModels.Forms
     public class LoginViewModel : ViewModelBase
     {
 
-        private string email;
         private DelegateCommand _forgotpassword;
         private string _pageReturn;
         private bool _isRunning;
@@ -113,7 +112,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "invalid email or password ", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.LoginError, Languages.Accept);
                 Password = string.Empty;
                 return;
             }

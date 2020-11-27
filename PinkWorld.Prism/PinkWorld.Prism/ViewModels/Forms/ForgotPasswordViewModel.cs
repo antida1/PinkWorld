@@ -31,6 +31,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             _navigationService = navigationService;
             _apiService = apiService;
             _regexHelper = regexHelper;
+            Title = Languages.ForgotPassword;
         }
 
         #endregion

@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:control="clr-namespace:PinkWorld.Prism.Controls"
-    xmlns:converter="clr-namespace:PinkWorld.Prism.Converters">
+    xmlns:converter="clr-namespace:PinkWorld.Prism.Converters"
+    xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers">
 
     <ContentView.Resources>
         <ResourceDictionary>
@@ -31,7 +32,7 @@
 
                     <control:BorderlessEntry
                         x:Name="EmailEntry"
-                        Placeholder="Email" Keyboard="Email"
+                        Placeholder="{i18n:Translate EmailPlaceHolder}" Keyboard="Email"
                         PlaceholderColor="{DynamicResource Gray-700}"
                         Style="{StaticResource EntryStyle}"
                         Text="{Binding Email}"
@@ -57,7 +58,7 @@
                 Margin="15,-5,0,0"
                 FontSize="12"
                 IsVisible="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={StaticResource StringToBooleanConverter}, ConverterParameter={x:Reference EmailEntry}}"
-                Text="Please enter the valid e-mail"
+                Text="{i18n:Translate EmailError}"
                 TextColor="{DynamicResource Red}"
                 VerticalOptions="FillAndExpand" />
 

@@ -97,6 +97,33 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALL IN ONE.
+        /// </summary>
+        public static string AllInOne {
+            get {
+                return ResourceManager.GetString("AllInOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already have an account?.
+        /// </summary>
+        public static string AlreadyAccount {
+            get {
+                return ResourceManager.GetString("AlreadyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breast cancer and the pandemic.
+        /// </summary>
+        public static string BrestCancerPandemic {
+            get {
+                return ResourceManager.GetString("BrestCancerPandemic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -178,6 +205,15 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Or create an account using social media.
+        /// </summary>
+        public static string CreateWithSocialMedia {
+            get {
+                return ResourceManager.GetString("CreateWithSocialMedia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         public static string Department {
@@ -201,6 +237,42 @@ namespace PinkWorld.Prism.Resources {
         public static string DepartmentPlaceHolder {
             get {
                 return ResourceManager.GetString("DepartmentPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This disease affects 1 in 8 women according to a Globocan study..
+        /// </summary>
+        public static string Description1 {
+            get {
+                return ResourceManager.GetString("Description1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The test collects cells with a fine needle, analyzes the results and generates a diagnosis..
+        /// </summary>
+        public static string Description2 {
+            get {
+                return ResourceManager.GetString("Description2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breast cancer affects both men and women..
+        /// </summary>
+        public static string Description3 {
+            get {
+                return ResourceManager.GetString("Description3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The pandemic one more obstacle.
+        /// </summary>
+        public static string Description4 {
+            get {
+                return ResourceManager.GetString("Description4", resourceCulture);
             }
         }
         
@@ -295,6 +367,15 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We can all fight it.
+        /// </summary>
+        public static string FightIt {
+            get {
+                return ResourceManager.GetString("FightIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {
@@ -322,6 +403,33 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Step.
+        /// </summary>
+        public static string FirstStep {
+            get {
+                return ResourceManager.GetString("FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FORGOT PASSWORD?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four Step.
+        /// </summary>
+        public static string FourStep {
+            get {
+                return ResourceManager.GetString("FourStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From Camera.
         /// </summary>
         public static string FromCamera {
@@ -336,6 +444,24 @@ namespace PinkWorld.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;ll send instructions on how to reset your password to the email address you have registered with us.
+        /// </summary>
+        public static string Instructions {
+            get {
+                return ResourceManager.GetString("Instructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KNOW MORE.
+        /// </summary>
+        public static string KnowMore {
+            get {
+                return ResourceManager.GetString("KnowMore", resourceCulture);
             }
         }
         
@@ -385,11 +511,47 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email or password wrong.
+        /// </summary>
+        public static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login with Facebook.
+        /// </summary>
+        public static string LoginFacebook {
+            get {
+                return ResourceManager.GetString("LoginFacebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main.
         /// </summary>
         public static string Main {
             get {
                 return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maps.
+        /// </summary>
+        public static string Maps {
+            get {
+                return ResourceManager.GetString("Maps", resourceCulture);
             }
         }
         
@@ -412,6 +574,15 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NEWS.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The device does not support access to the camera..
         /// </summary>
         public static string NoCameraSupported {
@@ -426,6 +597,15 @@ namespace PinkWorld.Prism.Resources {
         public static string NoGallerySupported {
             get {
                 return ResourceManager.GetString("NoGallerySupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an account?.
+        /// </summary>
+        public static string NotAccount {
+            get {
+                return ResourceManager.GetString("NotAccount", resourceCulture);
             }
         }
         
@@ -601,11 +781,29 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Second Step.
+        /// </summary>
+        public static string SecondStep {
+            get {
+                return ResourceManager.GetString("SecondStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to See maps - diagnostic centers and community support.
         /// </summary>
         public static string SeeMaps {
             get {
                 return ResourceManager.GetString("SeeMaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SEND.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         
@@ -619,11 +817,56 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Take care, Examine.
+        /// </summary>
+        public static string TakeCare {
+            get {
+                return ResourceManager.GetString("TakeCare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third Step.
+        /// </summary>
+        public static string ThirdStep {
+            get {
+                return ResourceManager.GetString("ThirdStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Together we are stronger.
+        /// </summary>
+        public static string Together {
+            get {
+                return ResourceManager.GetString("Together", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VIEW ALL.
+        /// </summary>
+        public static string ViewAll {
+            get {
+                return ResourceManager.GetString("ViewAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View stadistics.
         /// </summary>
         public static string ViewStadistics {
             get {
                 return ResourceManager.GetString("ViewStadistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome To Pink World.
+        /// </summary>
+        public static string WelcomePink {
+            get {
+                return ResourceManager.GetString("WelcomePink", resourceCulture);
             }
         }
     }

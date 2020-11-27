@@ -9,6 +9,7 @@
              xmlns:converter="clr-namespace:PinkWorld.Prism.Converters"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+             xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
              x:Class="PinkWorld.Prism.Views.Catalog.NavigationTravelPage"
              x:Name="navigationTravelPage"
              BackgroundColor="{DynamicResource Gray-White}"
@@ -36,7 +37,7 @@
                     <Label FontFamily="{StaticResource Montserrat-Medium}"
                            FontSize="16"
                            HorizontalOptions="Center"
-                           Text="Welcome To Pink World"
+                           Text="{i18n:Translate WelcomePink}"
                            TextColor="{DynamicResource Gray-900}"
                            VerticalOptions="Center" />
 
@@ -112,8 +113,8 @@
                 </rotator:SfRotator>
 
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="16,23,8,10">
-                    <Label Text="NEWS" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
-                    <buttons:SfButton Text="VIEW ALL" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
+                <Label Text="{i18n:Translate News}" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                <buttons:SfButton Text="{i18n:Translate ViewAll}" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
                                       FontFamily="{DynamicResource Montserrat-SemiBold}" VerticalOptions="StartAndExpand"
                                       TextColor="{StaticResource Link}" HorizontalOptions="End" />
                 </Grid>
@@ -207,8 +208,8 @@
                 </listView:SfListView>
 
                 <Grid RowSpacing="0" ColumnSpacing="0" Margin="16,0,8,10">
-                    <Label Text="ALL IN ONE" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
-                    <buttons:SfButton Text="KNOW MORE" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
+                <Label Text="{i18n:Translate AllInOne}" Style="{StaticResource HeaderLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                <buttons:SfButton Text="{i18n:Translate KnowMore}" BackgroundColor="Transparent" FontSize="12" CornerRadius="4"
                                       FontFamily="{DynamicResource Montserrat-SemiBold}"
                                       TextColor="{StaticResource Link}" HorizontalOptions="End" 
                                       Command="{Binding LinkCommand}"/>

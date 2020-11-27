@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PinkWorld.Prism.Helpers;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
@@ -46,32 +47,32 @@ namespace PinkWorld.Prism.ViewModels.Catalog
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "CMain.png",
-                    Place = "We can all fight it",
-                    Details = "This disease affects 1 in 8 women according to a Globocan study."
+                    Place = Languages.FightIt,
+                    Details = Languages.Description1
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C1.png",
-                    Place = "First Step"
+                    Place = Languages.FirstStep
 
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C2.png",
-                    Place = "Second Step",
+                    Place = Languages.SecondStep
                    
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "C3.png",
-                    Place = "Third Step",
+                    Place = Languages.ThirdStep
 
                 },
                  new Model
                 {
                     ImagePath = App.BaseImageUrl + "C4.png",
-                    Place = "Four Step"
-                  
+                    Place = Languages.FourStep
+
                 }
             };
 
@@ -80,27 +81,21 @@ namespace PinkWorld.Prism.ViewModels.Catalog
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "P1.jpeg",
-                    Place = "Take care, Examine",
-                    Details = "The test collects cells with a fine needle, analyzes the results and generates a diagnosis."
+                    Place = Languages.TakeCare,
+                    Details = Languages.Description2
                 },
                 new Model
                 {
                     ImagePath = App.BaseImageUrl + "P2.png",
-                    Place = "Together we are stronger",
-                    Details = "Breast cancer affects both men and women."
+                    Place = Languages.Together,
+                    Details = Languages.Description3
                 },
                 new Model
                 {
                     ImagePath =  App.BaseImageUrl + "P3.jpeg",
-                    Place ="Breast cancer and the pandemic",
-                    Details = "The pandemic one more obstacle"
-                },
-                new Model
-                {
-                    ImagePath = "",
-                    Place = "Madrid, Spain",
-                    Details = "The capital of Spain tends to be overlooked in favor of the colorful Barcelona, but this city has a glamor of its own."
-                },
+                    Place =Languages.BrestCancerPandemic,
+                    Details = Languages.Description4
+                },                
             };
 
             this.BestPlaces = new ObservableCollection<Model>

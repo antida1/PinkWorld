@@ -306,4 +306,94 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>L'appareil ne prend pas en charge l'accès à la galerie.</value>
   </data>
+  <data name="WelcomePink" xml:space="preserve">
+    <value>Bienvenue dans le Pink World!</value>
+  </data>
+  <data name="FightIt" xml:space="preserve">
+    <value>Nous ne pouvons que le combattre!</value>
+  </data>
+  <data name="Description1" xml:space="preserve">
+    <value>Cette maladie affecte 1 femme sur 8 selon une étude Globocan.!</value>
+  </data>
+  <data name="FirstStep" xml:space="preserve">
+    <value>Première étape</value>
+  </data>
+  <data name="SecondStep" xml:space="preserve">
+    <value>Deuxième étape</value>
+  </data>
+  <data name="ThirdStep" xml:space="preserve">
+    <value>Troisième étape</value>
+  </data>
+  <data name="FourStep" xml:space="preserve">
+    <value>Quatre étapes!</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>Afficher tout</value>
+  </data>
+  <data name="TakeCare" xml:space="preserve">
+    <value>Faites attention, examinez!</value>
+  </data>
+  <data name="Description2" xml:space="preserve">
+    <value>Le test recueille les cellules avec une aiguille fine, analyse les résultats et génère un diagnostic.!</value>
+  </data>
+  <data name="Together" xml:space="preserve">
+    <value>Ensemble nous sommes plus forts</value>
+  </data>
+  <data name="Description3" xml:space="preserve">
+    <value>Le cancer du sein touche à la fois les hommes et les femmes.</value>
+  </data>
+  <data name="BrestCancerPandemic" xml:space="preserve">
+    <value>Cancer du sein et pandémie</value>
+  </data>
+  <data name="Description4" xml:space="preserve">
+    <value>La pandémie, un obstacle de plus</value>
+  </data>
+  <data name="AllInOne" xml:space="preserve">
+    <value>Tout-en-un</value>
+  </data>
+  <data name="KnowMore" xml:space="preserve">
+    <value>En savoir plus</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Mot de passe oublié ?</value>
+  </data>
+  <data name="CreateWithSocialMedia" xml:space="preserve">
+    <value>Ou créez un compte en utilisant les réseaux sociaux</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Connexion avec Facebook</value>
+  </data>
+  <data name="NotAccount" xml:space="preserve">
+    <value>Vous n’avez pas de compte ?</value>
+  </data>
+  <data name="Email_Duplicate[1]" xml:space="preserve">
+    <value>Courrier électronique</value>
+  </data>
+  <data name="EmailPlaceHolder_Duplicate[1]" xml:space="preserve">
+    <value>Entrez votre adresse e-mail</value>
+  </data>
+  <data name="EmailError_Duplicate[1]" xml:space="preserve">
+    <value>Vous devez entrer un email valide.</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Email ou mot de passe incorrect</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="AlreadyAccount" xml:space="preserve">
+    <value>Vous avez déjà un compte ?</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Nous vous enverrons des instructions sur la façon de réinitialiser votre mot de passe à l'adresse e-mail que vous avez enregistrée avec nous</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Cartes</value>
+  </data>
 </root>

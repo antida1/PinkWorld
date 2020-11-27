@@ -68,7 +68,7 @@
                         FontSize="20"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"
-                        Text="Log In"
+                        Text="{Binding Title}"
                         TextColor="{DynamicResource Gray-900}" />
 
                     <!--  Label to display the description of this page  -->
@@ -93,7 +93,7 @@
                         <control:BorderlessEntry
                             x:Name="PasswordEntry"
                             IsPassword="True"
-                            Placeholder="Password"
+                            Placeholder="{i18n:Translate PasswordPlaceHolder}"
                             PlaceholderColor="{DynamicResource Gray-700}"
                             Style="{StaticResource EntryStyle}"
                             Text="{Binding Password}"
@@ -108,7 +108,7 @@
                         FontFamily="{StaticResource Montserrat-SemiBold}"
                         FontSize="12"
                         HorizontalOptions="End"
-                        Text="FORGOT PASSWORD?"
+                        Text="{i18n:Translate ForgotPassword}"
                         TextColor="{DynamicResource Gray-800}">
                         <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ForgotPassword}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
@@ -121,7 +121,7 @@
                         Margin="0,16"
                         Command="{Binding LoginCommand}"
                         Style="{StaticResource SfButtonStyle}"
-                        Text="LOG IN" />
+                        Text="{i18n:Translate Login}" />
 
 
                     <Label
@@ -129,7 +129,7 @@
                         FontFamily="{StaticResource Montserrat-Medium}"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"
-                        Text="Or create an account using social media"
+                        Text="{i18n:Translate CreateWithSocialMedia}"
                         TextColor="{DynamicResource Gray-800}" />
 
                     <!--  Login through facebook account  -->
@@ -154,7 +154,7 @@
                                 <Label
                                     FontFamily="{StaticResource Montserrat-Medium}"
                                     FontSize="16"
-                                    Text="Login with Facebook"
+                                    Text="{i18n:Translate LoginFacebook}"
                                     TextColor="{DynamicResource Gray-White}" />
                             </StackLayout>
                         </buttons:SfButton.Content>
@@ -174,7 +174,7 @@
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyle}"
-                        Text="Don't have an account?"
+                        Text="{i18n:Translate NotAccount}"
                         TextColor="{DynamicResource Gray-900}"
                         VerticalTextAlignment="Center" />
 
@@ -183,7 +183,7 @@
                         Command="{Binding SignUpCommand}"
                         CornerRadius="4"
                         Style="{StaticResource SfFlatButtonStyle}"
-                        Text="Sign Up" />
+                        Text="{i18n:Translate Register}" />
 
                 </StackLayout>
            
@@ -194,9 +194,9 @@
             <busyindicator:SfBusyIndicator AnimationType="Ball" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"
-                	                   BackgroundColor="Transparent"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
                 	                   HorizontalOptions="Center"
-                	                   TextColor="{StaticResource ColorAccent}"
+                	                   TextColor="{StaticResource ColorFontInverse}"
                 	                   IsBusy="{Binding IsRunning}"
                 	                   Title="{i18n:Translate Loading}"
                 	                   VerticalOptions="Center"
