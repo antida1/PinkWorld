@@ -33,6 +33,9 @@ namespace PinkWorld.Common.Responses
             ? $"https://localhost:44357/images/no-image.png"
             : $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
 
+    
+        public string PhoneNumber { get; set; }
+
 
         public UserType UserType { get; set; }
 

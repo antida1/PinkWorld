@@ -20,13 +20,14 @@ namespace PinkWorld.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private UserResponse _user;
-
+        private static PinkWorldMasterDetailPageViewModel _instance;
         public PinkWorldMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             LoadMenus();
             LoadUser();
             Name = Languages.Menu;
+            _instance = this;
         }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
         public string Name { get; set; }
@@ -44,6 +45,11 @@ namespace PinkWorld.Prism.ViewModels
                 User = token.User;
 
             }
+        }
+
+        public static PinkWorldMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
         }
         private void LoadMenus()
         {
@@ -73,19 +79,21 @@ namespace PinkWorld.Prism.ViewModels
             {
                 Icon = "ic_launcher_stadistic",
                 PageName = "",
-                Title = Languages.ViewStadistics
+                Title = Languages.ViewStadistics,
+                IsLoginRequired = true
             },
             new Menu
             {
                 Icon = "ic_launcher_map",
                 PageName = $"{nameof(MapPage)}",
                 Title = Languages.SeeMaps,
-                IsLoginRequired = true
+                IsLoginRequired = false
+
             },
             new Menu
             {
                 Icon = "ic_launcher_person",
-                PageName = "" ,
+                PageName =$"{nameof(EditUserPage)}",
                 Title = Languages.ModifyUser,
                 IsLoginRequired = true
             },
@@ -93,7 +101,7 @@ namespace PinkWorld.Prism.ViewModels
             {
                 Icon = "ic_launcher_exit",
                 PageName = $"{nameof(SimpleLoginPage)}",
-                Title = Languages.Login
+                Title = Settings.IsLogin ? Languages.Logout : Languages.Login
             }
         };
 

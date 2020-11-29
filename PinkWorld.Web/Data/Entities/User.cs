@@ -21,7 +21,6 @@ namespace PinkWorld.Web.Data.Entities
 
         [Display(Name = "Second Name")]
         [MaxLength(50)]
-        [Required]
         public string SecondName { get; set; }
 
         [Display(Name = "Last Name")]

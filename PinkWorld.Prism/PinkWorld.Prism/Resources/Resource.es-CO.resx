@@ -306,4 +306,25 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>El dispositivo no admite el acceso a la galería.!</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="LoginFirstMessage" xml:space="preserve">
+    <value>Debes estar logueado para acceder a esta página.</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Ingrese su contraseña actual.</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Ingrese una nueva contraseña.</value>
+  </data>
+  <data name="ConfirmNewPasswordError1" xml:space="preserve">
+    <value>La contraseña debe tener al menos 6 caracteres.</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>Las contraseñas no coinciden.</value>
+  </data>
+  <data name="ChangePassworrdMessage" xml:space="preserve">
+    <value>Contraseña actualizada con exito!</value>
+  </data>
 </root>

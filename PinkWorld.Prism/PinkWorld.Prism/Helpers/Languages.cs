@@ -123,6 +123,20 @@ namespace PinkWorld.Prism.Helpers
 
         public static string NoGallerySupported => Resource.NoGallerySupported;
 
-    }
+        public static string Logout => Resource.Logout;
 
+        public static string LoginFirstMessage => Resource.LoginFirstMessage;
+
+        public static string CurrentPasswordError => Resource.CurrentPasswordError;
+
+        public static string NewPasswordError => Resource.NewPasswordError;
+
+        public static string ConfirmNewPasswordError1 => Resource.ConfirmNewPasswordError1;
+
+        public static string ConfirmNewPasswordError2 => Resource.ConfirmNewPasswordError2;
+
+        public static string ChangePassworrdMessage => Resource.ChangePassworrdMessage;
+    }
+    
 }
+

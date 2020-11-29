@@ -1,4 +1,5 @@
-﻿using PinkWorld.Common.Helpers;
+﻿using Newtonsoft.Json;
+using PinkWorld.Common.Helpers;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
@@ -14,127 +15,61 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
-using CountryResponse = PinkWorld.Common.Responses.CountryResponse;
 
 namespace PinkWorld.Prism.ViewModels.Forms
 {
-    /// <summary>
-    /// ViewModel for sign-up page.
-    /// </summary>
-    [Preserve(AllMembers = true)]
-    public class SignUpPageViewModel : ViewModelBase
+    public class EditUserPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-
         private readonly IRegexHelper _regexHelper;
-
         private readonly IApiService _apiService;
-
         private readonly IFilesHelper _filesHelper;
-
-        #region Fields
-        private string password;
-
-        private string confirmPassword;
-
+        private DelegateCommand _changeImageCommand;
+        private DelegateCommand _saveCommand;
+        private DelegateCommand _changepassword;
+        private UserResponse _user;
         private ImageSource _image;
-
-        private UserRequest _user;
-
-        private CityResponse _city;
-
-        private ObservableCollection<CityResponse> _cities;
-
-        private DepartmentResponse _department;
-
-        private ObservableCollection<DepartmentResponse> _departments;
-
-        private CountryResponse _country;
-
-        private ObservableCollection<CountryResponse> _countries;
-        #endregion
-
         private bool _isRunning;
-
         private bool _isEnabled;
-
+        private CityResponse _city;
+        private ObservableCollection<CityResponse> _cities;
+        private DepartmentResponse _department;
+        private ObservableCollection<DepartmentResponse> _departments;
+        private CountryResponse _country;
+        private ObservableCollection<CountryResponse> _countries;
         private MediaFile _file;
 
-        private DelegateCommand _changeImageCommand;
-
-
-
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance for the <see cref="SignUpPageViewModel" /> class.
-        /// </summary>
-        public SignUpPageViewModel(INavigationService navigationService,
-        IRegexHelper regexHelper,
-        IApiService apiService,
-        IFilesHelper filesHelper) : base(navigationService)
+        public EditUserPageViewModel(
+            INavigationService navigationService,
+            IRegexHelper regexHelper,
+            IApiService apiService,
+            IFilesHelper filesHelper) : base(navigationService)
         {
-            this.LoginCommand = new Command(this.LoginClicked);
-            this.SignUpCommand = new Command(this.SignUpClickedAsync);
             _navigationService = navigationService;
             _regexHelper = regexHelper;
             _apiService = apiService;
             _filesHelper = filesHelper;
-            Title = Languages.Register;
-            Image = App.Current.Resources["UrlNoImage"].ToString();
-            IsEnabled = true;
-            User = new UserRequest();
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            Title = "Edit User";
+            User = token.User;
+            Image = User.ImageFullPath;
             LoadCountriesAsync();
-
         }
 
-        #endregion
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ??
+            (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
-        #region Property
+        public DelegateCommand SaveCommand => _saveCommand ??
+            (_saveCommand = new DelegateCommand(SaveAsync));
 
-        /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the password from users in the Sign Up page.
-        /// </summary>
-        public string Password
+
+        public DelegateCommand ChangePassword => _changepassword ??
+            (_changepassword = new DelegateCommand(Change));
+
+        public UserResponse User
         {
-            get
-            {
-                return this.password;
-            }
-
-            set
-            {
-                if (this.password == value)
-                {
-                    return;
-                }
-
-                this.password = value;
-
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the password confirmation from users in the Sign Up page.
-        /// </summary>
-        public string ConfirmPassword
-        {
-            get
-            {
-                return this.confirmPassword;
-            }
-
-            set
-            {
-                if (this.confirmPassword == value)
-                {
-                    return;
-                }
-
-                this.confirmPassword = value;
-
-            }
+            get => _user;
+            set => SetProperty(ref _user, value);
         }
 
         public ImageSource Image
@@ -143,10 +78,16 @@ namespace PinkWorld.Prism.ViewModels.Forms
             set => SetProperty(ref _image, value);
         }
 
-        public UserRequest User
+        public bool IsRunning
         {
-            get => _user;
-            set => SetProperty(ref _user, value);
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => SetProperty(ref _isEnabled, value);
         }
 
         public CountryResponse Country
@@ -196,111 +137,6 @@ namespace PinkWorld.Prism.ViewModels.Forms
             get => _cities;
             set => SetProperty(ref _cities, value);
         }
-        public bool IsRunning
-        {
-            get => _isRunning;
-            set => SetProperty(ref _isRunning, value);
-        }
-
-        public bool IsEnabled
-        {
-            get => _isEnabled;
-            set => SetProperty(ref _isEnabled, value);
-        }
-
-        public DelegateCommand ChangeImageCommand => _changeImageCommand ??
-            (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
-
-
-
-        #endregion
-
-        #region Command
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Log In button is clicked.
-        /// </summary>
-        public Command LoginCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Sign Up button is clicked.
-        /// </summary>
-        public Command SignUpCommand { get; set; }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Invoked when the Log in button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private async void LoginClicked(object obj)
-        {
-            await _navigationService.NavigateAsync(nameof(SimpleLoginPage));
-        }
-
-        /// <summary>
-        /// Invoked when the Sign Up button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private async void SignUpClickedAsync(object obj)
-        {
-            bool isValid = await ValidateDataAsync();
-            if (!isValid)
-            {
-                return;
-            }
-
-            IsRunning = true;
-            IsEnabled = false;
-
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                IsRunning = false;
-                IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
-                return;
-            }
-
-            byte[] imageArray = null;
-            if (_file != null)
-            {
-                imageArray = _filesHelper.ReadFully(_file.GetStream());
-            }
-
-            User.ImageArray = imageArray;
-
-            User.CityId = City.Id;
-
-            string url = App.Current.Resources["UrlAPI"].ToString();
-
-            Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account/Register", User);
-            IsRunning = false;
-            IsEnabled = true;
-
-            if (!response.IsSuccess)
-            {
-                if (response.Message == "Error002")
-                {
-                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error002, Languages.Accept);
-                }
-                else if (response.Message == "Error003")
-                {
-                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error003, Languages.Accept);
-                }
-                else
-                {
-                    await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
-                }
-
-                return;
-            }
-
-            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.RegisterMessge, Languages.Accept);
-            await _navigationService.GoBackAsync();
-        }
-
         private async void LoadCountriesAsync()
         {
             IsRunning = true;
@@ -327,6 +163,86 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             List<CountryResponse> list = (List<CountryResponse>)response.Result;
             Countries = new ObservableCollection<CountryResponse>(list.OrderBy(c => c.Name));
+            LoadCurrentCountyDepartmentCity();
+        }
+
+
+        private void LoadCurrentCountyDepartmentCity()
+        {
+            Country = Countries.FirstOrDefault(c => c.Departments.FirstOrDefault(d => d.Cities.FirstOrDefault(ci => ci.Id == User.City.Id) != null) != null);
+            Department = Country.Departments.FirstOrDefault(d => d.Cities.FirstOrDefault(c => c.Id == User.City.Id) != null);
+            City = Department.Cities.FirstOrDefault(c => c.Id == User.City.Id);
+        }
+
+        private async void SaveAsync()
+        {
+            bool isValid = await ValidateDataAsync();
+            if (!isValid)
+            {
+                return;
+            }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error, Languages.Accept);
+                return;
+            }
+
+            byte[] imageArray = null;
+            if (_file != null)
+            {
+                imageArray = _filesHelper.ReadFully(_file.GetStream());
+            }
+
+            UserRequest request = new UserRequest
+            {
+                Address = User.Address,
+                CityId = City.Id,
+                Document = User.Document,
+                Email = User.Email,
+                FirstName = User.FirstName,
+                SecondName=User.SecondName,
+                ImageArray = imageArray,
+                LastName = User.LastName,
+                Password = "123456",
+                PhoneNumber = User.PhoneNumber
+            };
+
+
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            Response response = await _apiService.ModifyUserAsync(url, "/api", "/Account/PutUser", request, token.Token);
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                if (response.Message == "Error001")
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error001, Languages.Accept);
+                }
+                else if (response.Message == "Error004")
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error001, Languages.Accept);
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                }
+
+                return;
+            }
+
+            UserResponse updatedUser = (UserResponse)response.Result;
+            token.User = updatedUser;
+            Settings.Token = JsonConvert.SerializeObject(token);
+            PinkWorldMasterDetailPageViewModel.GetInstance().LoadUser();
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.Ok, Languages.Accept);
         }
 
         private async Task<bool> ValidateDataAsync()
@@ -442,7 +358,12 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 });
             }
         }
-        #endregion
 
+
+        public async void Change() 
+        {
+
+            await _navigationService.NavigateAsync(nameof(SimpleResetPasswordPage));
+        }
     }
 }
