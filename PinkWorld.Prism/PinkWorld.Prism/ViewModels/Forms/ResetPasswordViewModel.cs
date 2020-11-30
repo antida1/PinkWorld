@@ -144,6 +144,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 return;
             }
 
+
             IsRunning = true;
             IsEnabled = false;
 

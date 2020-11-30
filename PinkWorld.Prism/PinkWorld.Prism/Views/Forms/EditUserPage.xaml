@@ -114,6 +114,8 @@
                                 PlaceholderColor="{DynamicResource Gray-700}"
                                 Style="{StaticResource EntryStyle}"
                                 Text="{Binding User.FirstName}"
+                                IsEnabled="{Binding IsOnSaleUser}"
+
                                 TextColor="{DynamicResource Gray-900}" />
                         </border:SfBorder>
 
@@ -140,6 +142,8 @@
                                 PlaceholderColor="{DynamicResource Gray-700}"
                                 Style="{StaticResource EntryStyle}"
                                 Text="{Binding User.LastName}"
+                                IsEnabled="{Binding IsOnSaleUser}"
+
                                 TextColor="{DynamicResource Gray-900}" />
                         </border:SfBorder>
 

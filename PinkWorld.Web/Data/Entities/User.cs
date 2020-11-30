@@ -34,11 +34,33 @@ namespace PinkWorld.Web.Data.Entities
         [Display(Name = "Image")]
         public Guid ImageId { get; set; }
 
-       //TODO change path local
+        //TODO change path local
+        public string ImageFacebook { get; set; }
+        
+        [Display(Name = "Login Type")]
+
+        public LoginType LoginType { get; set; }
+
         [Display(Name = "Image")]
-        public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://pinkworld.azurewebsites.net/images/no-image.png"
-            : $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
+
+        public string ImageFullPath
+        {
+            get
+            {
+                if (LoginType == LoginType.Facebook && string.IsNullOrEmpty(ImageFacebook) ||
+                    LoginType == LoginType.PinkWorld && ImageId == Guid.Empty)
+                {
+                    return $"https://localhost:44357/images/no-image.png";
+                }
+
+                if (LoginType == LoginType.Facebook)
+                {
+                    return ImageFacebook;
+                }
+
+                return $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
+            }
+        }
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }

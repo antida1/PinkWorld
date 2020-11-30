@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using PinkWorld.Common.Enums;
+using PinkWorld.Common.Models;
 using PinkWorld.Web.Data.Entities;
 using PinkWorld.Web.Models;
 using System;
@@ -40,6 +41,10 @@ namespace PinkWorld.Web.Helpers
         Task<string> GeneratePasswordResetTokenAsync(User user);
 
         Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+
+
+        Task<User> AddUserAsync(FacebookProfile model);
+
 
 
     }

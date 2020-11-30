@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PinkWorld.Common.Enums;
 using PinkWorld.Common.Helpers;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
@@ -38,6 +39,8 @@ namespace PinkWorld.Prism.ViewModels.Forms
         private CountryResponse _country;
         private ObservableCollection<CountryResponse> _countries;
         private MediaFile _file;
+        private bool _isOnSaleUser;
+
 
         public EditUserPageViewModel(
             INavigationService navigationService,
@@ -53,6 +56,8 @@ namespace PinkWorld.Prism.ViewModels.Forms
             Title = "Edit User";
             User = token.User;
             Image = User.ImageFullPath;
+            IsOnSaleUser = User.LoginType == LoginType.PinkWorld;
+
             LoadCountriesAsync();
         }
 
@@ -108,6 +113,13 @@ namespace PinkWorld.Prism.ViewModels.Forms
             get => _countries;
             set => SetProperty(ref _countries, value);
         }
+
+        public bool IsOnSaleUser
+        {
+            get => _isOnSaleUser;
+            set => SetProperty(ref _isOnSaleUser, value);
+        }
+
 
         public DepartmentResponse Department
         {
@@ -306,6 +318,12 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         private async void ChangeImageAsync()
         {
+            if (!IsOnSaleUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangeOnSocialNetwork, Languages.Accept);
+                return;
+            }
+
             await CrossMedia.Current.Initialize();
 
             string source = await Application.Current.MainPage.DisplayActionSheet(
@@ -362,6 +380,12 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
         public async void Change() 
         {
+            if (!IsOnSaleUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangeOnSocialNetwork, Languages.Accept);
+                return;
+            }
+
 
             await _navigationService.NavigateAsync(nameof(SimpleResetPasswordPage));
         }

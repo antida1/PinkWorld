@@ -324,4 +324,11 @@
   <data name="ChangePassworrdMessage" xml:space="preserve">
     <value>Mot de passe mis à jour avec succès!</value>
   </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Se connecter avec Facebook</value>
+  </data>
+  <data name="ChangeOnSocialNetwork" xml:space="preserve">
+    <value>Les utilisateurs inscrits sur les réseaux sociaux doivent changer la photo ou le mot de passe sur le réseau social.</value>
+  </data>
+
 </root>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PinkWorld.Common.Enums;
+using PinkWorld.Common.Models;
 using PinkWorld.Web.Data;
 using PinkWorld.Web.Data.Entities;
 using PinkWorld.Web.Models;
@@ -141,6 +142,36 @@ namespace PinkWorld.Web.Helpers
         {
             return await _userManager.ResetPasswordAsync(user, token, password);
         }
+
+        public async Task<User> AddUserAsync(FacebookProfile model)
+        {
+            User userEntity = new User
+            {
+                Address = "...",
+                Document = "...",
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                ImageFacebook = model.Picture?.Data?.Url,
+                PhoneNumber = "...",
+                City = await _context.Cities.FirstOrDefaultAsync(),
+                UserName = model.Email,
+                UserType = UserType.User,
+                LoginType = LoginType.Facebook,
+                ImageId = Guid.Empty
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(userEntity, model.Id);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            User newUser = await GetUserAsync(model.Email);
+            await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
+            return newUser;
+        }
+
 
 
     }

@@ -6,6 +6,10 @@ using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.Droid;
 using Plugin.Permissions;
+using Java.Security;
+using System;
+using Plugin.FacebookClient;
+using Android.Content;
 
 namespace PinkWorld.Prism.Droid
 {
@@ -26,8 +30,41 @@ namespace PinkWorld.Prism.Droid
             new SfBusyIndicatorRenderer();
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-
+            FacebookClientManager.Initialize(this);
+            #if DEBUG
+            GetAppHash();
+            #endif
             LoadApplication(new App(new AndroidInitializer()));
+        }
+
+
+        private void GetAppHash()
+        {
+            try
+            {
+                PackageInfo info = Application.Context.PackageManager.GetPackageInfo(Application.Context.PackageName, PackageInfoFlags.Signatures);
+                foreach (Android.Content.PM.Signature signature in info.Signatures)
+                {
+                    MessageDigest md = MessageDigest.GetInstance("SHA");
+                    md.Update(signature.ToByteArray());
+
+                    var hash = Convert.ToBase64String(md.Digest());
+                }
+            }
+            catch (NoSuchAlgorithmException e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            FacebookClientManager.OnActivityResult(requestCode, resultCode, data);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)

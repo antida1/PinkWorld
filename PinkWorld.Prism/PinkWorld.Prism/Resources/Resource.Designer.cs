@@ -106,6 +106,15 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Users registered by social networks, must change the photo or password on the social network..
+        /// </summary>
+        public static string ChangeOnSocialNetwork {
+            get {
+                return ResourceManager.GetString("ChangeOnSocialNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password updated successfully!.
         /// </summary>
         public static string ChangePassworrdMessage {
@@ -417,6 +426,15 @@ namespace PinkWorld.Prism.Resources {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login With Facebook.
+        /// </summary>
+        public static string LoginFacebook {
+            get {
+                return ResourceManager.GetString("LoginFacebook", resourceCulture);
             }
         }
         

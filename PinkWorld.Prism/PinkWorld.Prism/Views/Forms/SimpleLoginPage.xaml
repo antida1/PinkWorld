@@ -137,7 +137,7 @@
                         Grid.Row="7"
                         Margin="0,16,0,16"
                         BackgroundColor="{DynamicResource FacebookBlue}"
-                        Command="{Binding SocialMediaLoginCommand}"
+                        Command="{Binding LoginFacebookCommand}"
                         CornerRadius="20"
                         HeightRequest="40">
                         <buttons:SfButton.Content>
@@ -154,7 +154,7 @@
                                 <Label
                                     FontFamily="{StaticResource Montserrat-Medium}"
                                     FontSize="16"
-                                    Text="Login with Facebook"
+                                    Text="{i18n:Translate LoginFacebook}"
                                     TextColor="{DynamicResource Gray-White}" />
                             </StackLayout>
                         </buttons:SfButton.Content>

@@ -136,7 +136,12 @@ namespace PinkWorld.Prism.Helpers
         public static string ConfirmNewPasswordError2 => Resource.ConfirmNewPasswordError2;
 
         public static string ChangePassworrdMessage => Resource.ChangePassworrdMessage;
+
+        public static string LoginFacebook => Resource.LoginFacebook;
+
+        public static string ChangeOnSocialNetwork => Resource.ChangeOnSocialNetwork;
+
     }
-    
+
 }
 

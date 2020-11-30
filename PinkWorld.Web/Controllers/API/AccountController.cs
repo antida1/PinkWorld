@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MimeKit;
 using PinkWorld.Common.Enums;
+using PinkWorld.Common.Models;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Web.Data;
@@ -58,27 +59,7 @@ namespace PinkWorld.Web.Controllers.API
 
                     if (result.Succeeded)
                     {
-                        Claim[] claims = new[]
-                        {
-                        new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                    };
-
-                        SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-                        SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                        JwtSecurityToken token = new JwtSecurityToken(
-                            _configuration["Tokens:Issuer"],
-                            _configuration["Tokens:Audience"],
-                            claims,
-                            expires: DateTime.UtcNow.AddDays(99),
-                            signingCredentials: credentials);
-                        var results = new
-                        {
-                            token = new JwtSecurityTokenHandler().WriteToken(token),
-                            expiration = token.ValidTo,
-                            user
-                        };
-
+                        object results = GetToken(user);
                         return Created(string.Empty, results);
                     }
                 }
@@ -86,6 +67,60 @@ namespace PinkWorld.Web.Controllers.API
 
             return BadRequest();
         }
+
+
+        [HttpPost]
+        [Route("LoginFacebook")]
+        public async Task<IActionResult> LoginFacebook([FromBody] FacebookProfile model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _userHelper.GetUserAsync(model.Email);
+                if (user == null)
+                {
+                    await _userHelper.AddUserAsync(model);
+                }
+                else
+                {
+                    user.ImageFacebook = model.Picture?.Data?.Url;
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    await _userHelper.UpdateUserAsync(user);
+                }
+
+                object results = GetToken(user);
+                return Created(string.Empty, results);
+            }
+
+            return BadRequest();
+        }
+
+        private object GetToken(User user)
+        {
+            Claim[] claims = new[]
+            {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+            SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            JwtSecurityToken token = new JwtSecurityToken(
+                _configuration["Tokens:Issuer"],
+                _configuration["Tokens:Audience"],
+                claims,
+                expires: DateTime.UtcNow.AddDays(99),
+                signingCredentials: credentials);
+
+            return new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo,
+                user
+            };
+        }
+
+
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]

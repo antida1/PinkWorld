@@ -1,4 +1,5 @@
-﻿using PinkWorld.Common.Request;
+﻿using PinkWorld.Common.Models;
+using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using System.Threading.Tasks;
 
@@ -18,6 +19,8 @@ namespace PinkWorld.Common.Services
 
 
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string token);
+
+        Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, FacebookProfile request);
 
 
 
