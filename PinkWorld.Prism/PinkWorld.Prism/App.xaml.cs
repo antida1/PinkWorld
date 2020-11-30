@@ -47,8 +47,6 @@ namespace PinkWorld.Prism
             containerRegistry.Register<IGeolocatorService, GeolocatorService>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.Register<IFilesHelper, FilesHelper>();
-
-
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ListQuizzesPage, ListQuizzesPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleLoginPage, LoginViewModel>();
@@ -58,7 +56,8 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<PaymentSuccessPage, PaymentViewModel>();
             containerRegistry.RegisterForNavigation<SimpleSignUpPage, SignUpPageViewModel>();
             containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
-
+            containerRegistry.RegisterForNavigation<SimpleResetPasswordPage, ResetPasswordViewModel>();
+            containerRegistry.RegisterForNavigation<EditUserPage, EditUserPageViewModel>();
         }
 
         public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";

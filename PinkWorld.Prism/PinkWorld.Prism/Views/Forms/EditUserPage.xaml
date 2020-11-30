@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="PinkWorld.Prism.Views.Forms.SimpleSignUpPage"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PinkWorld.Prism.Views.Forms.EditUserPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -14,8 +13,8 @@
     xmlns:i18n="clr-namespace:PinkWorld.Prism.Helpers"
     Title="{Binding Title}"
     BackgroundColor="{DynamicResource Gray-200}"
+    xmlns:viewModel="clr-namespace:PinkWorld.Prism.ViewModels.Forms"
     NavigationPage.HasNavigationBar="True">
-
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -30,12 +29,8 @@
 
 
     <ContentPage.Content>
-
         <StackLayout>
         <StackLayout>
-
-        <AbsoluteLayout>
-
             <ScrollView HorizontalOptions="Center">
                 <ScrollView.VerticalOptions>
                     <OnIdiom
@@ -119,6 +114,8 @@
                                 PlaceholderColor="{DynamicResource Gray-700}"
                                 Style="{StaticResource EntryStyle}"
                                 Text="{Binding User.FirstName}"
+                                IsEnabled="{Binding IsOnSaleUser}"
+
                                 TextColor="{DynamicResource Gray-900}" />
                         </border:SfBorder>
 
@@ -145,6 +142,8 @@
                                 PlaceholderColor="{DynamicResource Gray-700}"
                                 Style="{StaticResource EntryStyle}"
                                 Text="{Binding User.LastName}"
+                                IsEnabled="{Binding IsOnSaleUser}"
+
                                 TextColor="{DynamicResource Gray-900}" />
                         </border:SfBorder>
 
@@ -211,84 +210,25 @@
                                     Title="{i18n:Translate CityPlaceHolder}"/>
                         </border:SfBorder>
 
-                        <!--  Entry to get email ID from user  -->
-                        <border:SfBorder
-                            BackgroundColor="{DynamicResource Gray-White}"
-                            BorderColor="{Binding Source={x:Reference EmailEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                            Style="{StaticResource SfBorderStyle}">
-                            <control:BorderlessEntry
-                                x:Name="EmailEntry"
-                                Placeholder="{i18n:Translate EmailPlaceHolder}"
-                                PlaceholderColor="{DynamicResource Gray-700}"
-                                Style="{StaticResource EntryStyle}"
-                                Keyboard="Email"
-                                Text="{Binding User.Email}"
-                                TextColor="{DynamicResource Gray-900}" />
-                        </border:SfBorder>
-
-                        <!--  Entry to get password from user  -->
-                        <border:SfBorder
-                            BackgroundColor="{DynamicResource Gray-White}"
-                            BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                            Style="{StaticResource SfBorderStyle}">
-                            <control:BorderlessEntry
-                                x:Name="PasswordEntry"
-                                IsPassword="true"
-                                Placeholder="{i18n:Translate PasswordPlaceHolder}"
-                                PlaceholderColor="{DynamicResource Gray-700}"
-                                Style="{StaticResource EntryStyle}"
-                                Text="{Binding User.Password}"
-                                TextColor="{DynamicResource Gray-900}" />
-                        </border:SfBorder>
-
-                        <!--  Entry to get the confirm password from user  -->
-                        <border:SfBorder
-                            BackgroundColor="{DynamicResource Gray-White}"
-                            BorderColor="{Binding Source={x:Reference ConfirmPasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                            Style="{StaticResource SfBorderStyle}">
-                            <control:BorderlessEntry
-                                x:Name="ConfirmPasswordEntry"
-                                IsPassword="true"
-                                Placeholder="{i18n:Translate PasswordConfirmPlaceHolder}"
-                                PlaceholderColor="{DynamicResource Gray-700}"
-                                Style="{StaticResource EntryStyle}"
-                                Text="{Binding User.PasswordConfirm}"
-                                TextColor="{DynamicResource Gray-900}" />
-                        </border:SfBorder>
-
                         <!--  Sign-up button  -->
                         <buttons:SfButton
-                            Command="{Binding SignUpCommand}"
+                            Command="{Binding SaveCommand}"
                             CornerRadius="20"
                             FontFamily="{StaticResource Montserrat-SemiBold}"
                             Style="{StaticResource SfButtonStyle}"
-                            Text="{i18n:Translate Register}" />
-                    </StackLayout>
-
-                    <StackLayout
-                        HorizontalOptions="Center"
-                        Orientation="Horizontal"
-                        Spacing="1"
-                        VerticalOptions="End">
-
-
-
-                        <Label
-                            FontFamily="{StaticResource Montserrat-Medium}"
-                            HorizontalOptions="CenterAndExpand"
-                            HorizontalTextAlignment="Center"
-                            Style="{StaticResource LabelStyle}"
-                            Text="{i18n:Translate AlreadyAccount}"
-                            TextColor="{DynamicResource Gray-800}"
-                            VerticalTextAlignment="Center" />
+                            Text="Save" />
 
                         <buttons:SfButton
-                            Command="{Binding LoginCommand}"
-                            CornerRadius="4"
-                            Style="{StaticResource SfFlatButtonStyle}"
-                            Text="{i18n:Translate Login}" />
-
+                            Command="{Binding ChangePassword}"
+                            CornerRadius="20"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="Change Password" />
+                            
+                        <StackLayout></StackLayout>
                     </StackLayout>
+                    
+                  
                 </StackLayout>
             </ScrollView>
             <busyindicator:SfBusyIndicator AnimationType="Ball" 
@@ -302,11 +242,8 @@
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
-
         </StackLayout>
         </StackLayout>
-
-        </AbsoluteLayout>
-
     </ContentPage.Content>
 </ContentPage>
+

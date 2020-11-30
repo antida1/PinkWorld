@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MimeKit;
 using PinkWorld.Common.Enums;
+using PinkWorld.Common.Models;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Web.Data;
@@ -58,27 +59,7 @@ namespace PinkWorld.Web.Controllers.API
 
                     if (result.Succeeded)
                     {
-                        Claim[] claims = new[]
-                        {
-                        new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                    };
-
-                        SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-                        SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                        JwtSecurityToken token = new JwtSecurityToken(
-                            _configuration["Tokens:Issuer"],
-                            _configuration["Tokens:Audience"],
-                            claims,
-                            expires: DateTime.UtcNow.AddDays(99),
-                            signingCredentials: credentials);
-                        var results = new
-                        {
-                            token = new JwtSecurityTokenHandler().WriteToken(token),
-                            expiration = token.ValidTo,
-                            user
-                        };
-
+                        object results = GetToken(user);
                         return Created(string.Empty, results);
                     }
                 }
@@ -86,6 +67,60 @@ namespace PinkWorld.Web.Controllers.API
 
             return BadRequest();
         }
+
+
+        [HttpPost]
+        [Route("LoginFacebook")]
+        public async Task<IActionResult> LoginFacebook([FromBody] FacebookProfile model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _userHelper.GetUserAsync(model.Email);
+                if (user == null)
+                {
+                    await _userHelper.AddUserAsync(model);
+                }
+                else
+                {
+                    user.ImageFacebook = model.Picture?.Data?.Url;
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    await _userHelper.UpdateUserAsync(user);
+                }
+
+                object results = GetToken(user);
+                return Created(string.Empty, results);
+            }
+
+            return BadRequest();
+        }
+
+        private object GetToken(User user)
+        {
+            Claim[] claims = new[]
+            {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+            SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            JwtSecurityToken token = new JwtSecurityToken(
+                _configuration["Tokens:Issuer"],
+                _configuration["Tokens:Audience"],
+                claims,
+                expires: DateTime.UtcNow.AddDays(99),
+                signingCredentials: credentials);
+
+            return new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo,
+                user
+            };
+        }
+
+
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
@@ -237,6 +272,101 @@ namespace PinkWorld.Web.Controllers.API
             return Ok(new Response { IsSuccess = true });
         }
 
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPut]
+        [Route("PutUser")]
+        public async Task<IActionResult> PutUser([FromBody] UserRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+            User user = await _userHelper.GetUserAsync(request.Email);
+            if (user == null)
+            {
+                return NotFound("Error001");
+            }
+
+
+
+            City city = await _context.Cities.FindAsync(request.CityId);
+            if (city == null)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error004"
+                });
+            }
+
+            Guid imageId = user.ImageId;
+
+            if (request.ImageArray != null)
+            {
+                imageId = await _blobHelper.UploadBlobAsync(request.ImageArray, "users");
+            }
+
+            user.FirstName = request.FirstName;
+            user.SecondName = request.SecondName;
+            user.Address = request.Address;
+            user.PhoneNumber = request.PhoneNumber;
+            user.Document = request.Document;
+            user.ImageId = imageId;
+            user.City = city;
+           
+            
+
+
+
+            IdentityResult respose = await _userHelper.UpdateUserAsync(user);
+            if (!respose.Succeeded)
+            {
+                return BadRequest(respose.Errors.FirstOrDefault().Description);
+            }
+
+            User updatedUser = await _userHelper.GetUserAsync(request.Email);
+            return Ok(updatedUser);
+        }
+
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPost]
+        [Route("ChangePasswordAPI")]
+        public async Task<IActionResult> ChangePasswordAPI([FromBody] ChangePasswordRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request",
+                    Result = ModelState
+                });
+            }
+
+            string email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            User user = await _userHelper.GetUserAsync(email);
+            if (user == null)
+            {
+                return NotFound("Error001");
+            }
+
+            IdentityResult result = await _userHelper.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
+            if (!result.Succeeded)
+            {
+                var message = result.Errors.FirstOrDefault().Description;
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error005"
+                });
+            }
+
+            return Ok(new Response { IsSuccess = true });
+        }
     }
 
 }

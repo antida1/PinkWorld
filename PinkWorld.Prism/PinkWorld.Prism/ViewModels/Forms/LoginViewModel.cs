@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PinkWorld.Common.Helpers;
+using PinkWorld.Common.Models;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
@@ -7,8 +8,12 @@ using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
 using PinkWorld.Prism.Views.Forms;
+using Plugin.FacebookClient;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
 
@@ -28,6 +33,9 @@ namespace PinkWorld.Prism.ViewModels.Forms
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private DelegateCommand _signup;
+        private readonly IFacebookClient _facebookService = CrossFacebookClient.Current;
+        private DelegateCommand _loginFacebookCommand;
+
 
         private bool isInvalidEmail;
 
@@ -54,6 +62,9 @@ namespace PinkWorld.Prism.ViewModels.Forms
         public DelegateCommand ForgotPassword => _forgotpassword ?? (_forgotpassword = new DelegateCommand(ForgotPasswordPage));
 
         public DelegateCommand SignUpCommand => _signup ?? (_signup = new DelegateCommand(SignUpPage));
+
+        public DelegateCommand LoginFacebookCommand => _loginFacebookCommand ?? (_loginFacebookCommand = new DelegateCommand(LoginFacebookAsync));
+
 
 
         public bool IsRunning
@@ -163,6 +174,79 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             await _navigationService.NavigateAsync(nameof(SimpleSignUpPage));
 
+        }
+
+        private async void LoginFacebookAsync()
+        {
+            try
+            {
+
+                if (_facebookService.IsLoggedIn)
+                {
+                    _facebookService.Logout();
+                }
+
+                async void userDataDelegate(object sender, FBEventArgs<string> e)
+                {
+                    switch (e.Status)
+                    {
+                        case FacebookActionStatus.Completed:
+                            FacebookProfile facebookProfile = await Task.Run(() => JsonConvert.DeserializeObject<FacebookProfile>(e.Data));
+                            await LoginFacebookAsync(facebookProfile);
+                            break;
+                        case FacebookActionStatus.Canceled:
+                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Canceled", "Ok");
+                            break;
+                        case FacebookActionStatus.Error:
+                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Error", "Ok");
+                            break;
+                        case FacebookActionStatus.Unauthorized:
+                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Unauthorized", "Ok");
+                            break;
+                    }
+
+                    _facebookService.OnUserData -= userDataDelegate;
+                }
+
+                _facebookService.OnUserData += userDataDelegate;
+
+                string[] fbRequestFields = { "email", "first_name", "picture.width(999)", "gender", "last_name" };
+                string[] fbPermisions = { "email" };
+                await _facebookService.RequestUserDataAsync(fbRequestFields, fbPermisions);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        private async Task LoginFacebookAsync(FacebookProfile facebookProfile)
+        {
+            IsRunning = true;
+            IsEnabled = false;
+
+            string url = App.Current.Resources["UrlAPI"].ToString();
+
+            Response response = await _apiService.GetTokenAsync(url, "api", "/Account/LoginFacebook", facebookProfile);
+
+            if (!response.IsSuccess)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, "invalid email or password", Languages.Accept);
+                Password = string.Empty;
+                return;
+            }
+
+            TokenResponse token = (TokenResponse)response.Result;
+            Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.IsLogin = true;
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
+            Password = string.Empty;
         }
 
 

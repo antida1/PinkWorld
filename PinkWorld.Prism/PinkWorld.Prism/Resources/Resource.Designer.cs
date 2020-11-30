@@ -133,6 +133,24 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Users registered by social networks, must change the photo or password on the social network..
+        /// </summary>
+        public static string ChangeOnSocialNetwork {
+            get {
+                return ResourceManager.GetString("ChangeOnSocialNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password updated successfully!.
+        /// </summary>
+        public static string ChangePassworrdMessage {
+            get {
+                return ResourceManager.GetString("ChangePassworrdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         public static string City {
@@ -156,6 +174,24 @@ namespace PinkWorld.Prism.Resources {
         public static string CityPlaceHolder {
             get {
                 return ResourceManager.GetString("CityPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password must be at least 6 characters..
+        /// </summary>
+        public static string ConfirmNewPasswordError1 {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordError1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match..
+        /// </summary>
+        public static string ConfirmNewPasswordError2 {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordError2", resourceCulture);
             }
         }
         
@@ -205,11 +241,19 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+
+        ///   Looks up a localized string similar to Enter your current password..
+        /// </summary>
+        public static string CurrentPasswordError {
+            get {
+                return ResourceManager.GetString("CurrentPasswordError", resourceCulture);
+
         ///   Looks up a localized string similar to Or create an account using social media.
         /// </summary>
         public static string CreateWithSocialMedia {
             get {
                 return ResourceManager.GetString("CreateWithSocialMedia", resourceCulture);
+
             }
         }
         
@@ -511,20 +555,35 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+
+        ///   Looks up a localized string similar to Login With Facebook.
+        /// </summary>
+        public static string LoginFacebook {
+            get {
+                return ResourceManager.GetString("LoginFacebook", resourceCulture);
+
         ///   Looks up a localized string similar to Email or password wrong.
         /// </summary>
         public static string LoginError {
             get {
-                return ResourceManager.GetString("LoginError", resourceCulture);
+                return ResourceManager.GetString("LoginError", resourceCulture);>>>>>>> main
             }
         }
         
         /// <summary>
+
+        ///   Looks up a localized string similar to You must be logged in to access this page..
+        /// </summary>
+        public static string LoginFirstMessage {
+            get {
+                return ResourceManager.GetString("LoginFirstMessage", resourceCulture);
+
         ///   Looks up a localized string similar to Login with Facebook.
         /// </summary>
         public static string LoginFacebook {
             get {
                 return ResourceManager.GetString("LoginFacebook", resourceCulture);
+
             }
         }
         
@@ -574,11 +633,19 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+
+        ///   Looks up a localized string similar to Please enter a new password..
+        /// </summary>
+        public static string NewPasswordError {
+            get {
+                return ResourceManager.GetString("NewPasswordError", resourceCulture);
+
         ///   Looks up a localized string similar to NEWS.
         /// </summary>
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+
             }
         }
         

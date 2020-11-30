@@ -100,11 +100,11 @@ namespace PinkWorld.Prism.Views
                     Label = site.Name,
                     Position = new Position(site.Latitude, site.Longitude),
                     Type = PinType.Place
-                    
-                    
                 });
             }
         }
+
+   
 
     }
 

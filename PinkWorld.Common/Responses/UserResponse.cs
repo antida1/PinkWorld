@@ -28,10 +28,33 @@ namespace PinkWorld.Common.Responses
 
         public Guid ImageId { get; set; }
 
+        public string ImageFacebook { get; set; }
 
-        public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44357/images/no-image.png"
-            : $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
+        public LoginType LoginType { get; set; }
+
+        public string ImageFullPath
+        {
+            get
+            {
+                if (LoginType == LoginType.Facebook && string.IsNullOrEmpty(ImageFacebook) ||
+                    LoginType == LoginType.PinkWorld && ImageId == Guid.Empty)
+                {
+                    return $"https://localhost:44357/images/no-image.png";
+                }
+
+                if (LoginType == LoginType.Facebook)
+                {
+                    return ImageFacebook;
+                }
+
+                return $"https://pinkworld.blob.core.windows.net/users/{ImageId}";
+            }
+        }
+
+
+
+    
+        public string PhoneNumber { get; set; }
 
 
         public UserType UserType { get; set; }

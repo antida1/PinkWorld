@@ -123,6 +123,26 @@ namespace PinkWorld.Prism.Helpers
 
         public static string NoGallerySupported => Resource.NoGallerySupported;
 
+
+        public static string Logout => Resource.Logout;
+
+        public static string LoginFirstMessage => Resource.LoginFirstMessage;
+
+        public static string CurrentPasswordError => Resource.CurrentPasswordError;
+
+        public static string NewPasswordError => Resource.NewPasswordError;
+
+        public static string ConfirmNewPasswordError1 => Resource.ConfirmNewPasswordError1;
+
+        public static string ConfirmNewPasswordError2 => Resource.ConfirmNewPasswordError2;
+
+        public static string ChangePassworrdMessage => Resource.ChangePassworrdMessage;
+
+        public static string LoginFacebook => Resource.LoginFacebook;
+
+        public static string ChangeOnSocialNetwork => Resource.ChangeOnSocialNetwork;
+
+
         public static string WelcomePink => Resource.WelcomePink;
 
         public static string Description1 => Resource.Description1;
@@ -182,6 +202,8 @@ namespace PinkWorld.Prism.Helpers
         public static string Send => Resource.Send;
 
         public static string Maps => Resource.Maps;
+
     }
 
 }
+

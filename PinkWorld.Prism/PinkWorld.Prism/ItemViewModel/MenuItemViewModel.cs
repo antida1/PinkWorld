@@ -1,5 +1,8 @@
-﻿using PinkWorld.Common.Models;
+﻿using PinkWorld.Common.Helpers;
+using PinkWorld.Common.Models;
+using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.Views;
+using PinkWorld.Prism.Views.Forms;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -22,7 +25,32 @@ namespace PinkWorld.Prism.ItemViewModel
 
         private async void SelectMenuAsync()
         {
-            await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{PageName}");
+
+            if (PageName == nameof(SimpleLoginPage) && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.Token = null;
+                
+            }
+
+            if (IsLoginRequired && !Settings.IsLogin)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.LoginFirstMessage, Languages.Accept);
+                NavigationParameters parameters = new NavigationParameters
+                {
+                    { "pageReturn", PageName }
+                };
+
+                await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(SimpleLoginPage)}", parameters);
+            }
+            else
+            {
+                await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{PageName}");
+            }
+
+
+
+
         }
     }
 

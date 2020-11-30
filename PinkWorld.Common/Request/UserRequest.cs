@@ -23,7 +23,6 @@ namespace PinkWorld.Common.Request
 
         [Display(Name = "First Name")]
         [MaxLength(50)]
-        [Required]
         public string SecondName { get; set; }
 
         [Display(Name = "Last Name")]

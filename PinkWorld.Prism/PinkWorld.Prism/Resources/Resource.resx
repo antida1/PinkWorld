@@ -306,6 +306,33 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>The device does not support access to the gallery.</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="LoginFirstMessage" xml:space="preserve">
+    <value>You must be logged in to access this page.</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Enter your current password.</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Please enter a new password.</value>
+  </data>
+  <data name="ConfirmNewPasswordError1" xml:space="preserve">
+    <value>The password must be at least 6 characters.</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="ChangePassworrdMessage" xml:space="preserve">
+    <value>Password updated successfully!</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Login With Facebook</value>
+  </data>
+  <data name="ChangeOnSocialNetwork" xml:space="preserve">
+    <value>Users registered by social networks, must change the photo or password on the social network.</value>
+  </data>
   <data name="AllInOne" xml:space="preserve">
     <value>ALL IN ONE</value>
   </data>

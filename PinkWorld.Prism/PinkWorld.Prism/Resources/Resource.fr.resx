@@ -306,6 +306,31 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>L'appareil ne prend pas en charge l'accès à la galerie.</value>
   </data>
+
+  <data name="LoginFirstMessage" xml:space="preserve">
+    <value>Vous devez être connecté pour accéder à cette page.</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Entrer votre mot de passe actuel.</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Veuillez saisir un nouveau mot de passe.</value>
+  </data>
+  <data name="ConfirmNewPasswordError1" xml:space="preserve">
+    <value>Le mot de passe doit comporter au moins 6 caractères.</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>Les mots de passe ne correspondent pas.</value>
+  </data>
+  <data name="ChangePassworrdMessage" xml:space="preserve">
+    <value>Mot de passe mis à jour avec succès!</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Se connecter avec Facebook</value>
+  </data>
+  <data name="ChangeOnSocialNetwork" xml:space="preserve">
+    <value>Les utilisateurs inscrits sur les réseaux sociaux doivent changer la photo ou le mot de passe sur le réseau social.</value>
+  </data>
   <data name="WelcomePink" xml:space="preserve">
     <value>Bienvenue dans le Pink World!</value>
   </data>
