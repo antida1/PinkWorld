@@ -16,9 +16,6 @@
              NavigationPage.HasNavigationBar="True">
 
 
-
-
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
