@@ -30,8 +30,12 @@
 
 
     <ContentPage.Content>
+
         <StackLayout>
         <StackLayout>
+
+        <AbsoluteLayout>
+
             <ScrollView HorizontalOptions="Center">
                 <ScrollView.VerticalOptions>
                     <OnIdiom
@@ -274,7 +278,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource LabelStyle}"
-                            Text="Already have an account?"
+                            Text="{i18n:Translate AlreadyAccount}"
                             TextColor="{DynamicResource Gray-800}"
                             VerticalTextAlignment="Center" />
 
@@ -282,7 +286,7 @@
                             Command="{Binding LoginCommand}"
                             CornerRadius="4"
                             Style="{StaticResource SfFlatButtonStyle}"
-                            Text="Log In" />
+                            Text="{i18n:Translate Login}" />
 
                     </StackLayout>
                 </StackLayout>
@@ -298,7 +302,11 @@
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
+
         </StackLayout>
         </StackLayout>
+
+        </AbsoluteLayout>
+
     </ContentPage.Content>
 </ContentPage>

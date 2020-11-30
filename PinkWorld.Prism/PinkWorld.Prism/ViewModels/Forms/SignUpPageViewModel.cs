@@ -357,7 +357,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             if (string.IsNullOrEmpty(User.Email) || !_regexHelper.IsValidEmail(User.Email))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "Error email", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.EmailError, Languages.Accept);
                 return false;
             }
 

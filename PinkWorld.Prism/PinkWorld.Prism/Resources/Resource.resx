@@ -333,5 +333,85 @@
   <data name="ChangeOnSocialNetwork" xml:space="preserve">
     <value>Users registered by social networks, must change the photo or password on the social network.</value>
   </data>
-
+  <data name="AllInOne" xml:space="preserve">
+    <value>ALL IN ONE</value>
+  </data>
+  <data name="BrestCancerPandemic" xml:space="preserve">
+    <value>Breast cancer and the pandemic</value>
+  </data>
+  <data name="Description1" xml:space="preserve">
+    <value>This disease affects 1 in 8 women according to a Globocan study.</value>
+  </data>
+  <data name="Description2" xml:space="preserve">
+    <value>The test collects cells with a fine needle, analyzes the results and generates a diagnosis.</value>
+  </data>
+  <data name="Description3" xml:space="preserve">
+    <value>Breast cancer affects both men and women.</value>
+  </data>
+  <data name="Description4" xml:space="preserve">
+    <value>The pandemic one more obstacle</value>
+  </data>
+  <data name="FightIt" xml:space="preserve">
+    <value>We can all fight it</value>
+  </data>
+  <data name="FirstStep" xml:space="preserve">
+    <value>First Step</value>
+  </data>
+  <data name="FourStep" xml:space="preserve">
+    <value>Four Step</value>
+  </data>
+  <data name="KnowMore" xml:space="preserve">
+    <value>KNOW MORE</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>NEWS</value>
+  </data>
+  <data name="SecondStep" xml:space="preserve">
+    <value>Second Step</value>
+  </data>
+  <data name="TakeCare" xml:space="preserve">
+    <value>Take care, Examine</value>
+  </data>
+  <data name="ThirdStep" xml:space="preserve">
+    <value>Third Step</value>
+  </data>
+  <data name="Together" xml:space="preserve">
+    <value>Together we are stronger</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>VIEW ALL</value>
+  </data>
+  <data name="WelcomePink" xml:space="preserve">
+    <value>Welcome To Pink World</value>
+  </data>
+  <data name="CreateWithSocialMedia" xml:space="preserve">
+    <value>Or create an account using social media</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>FORGOT PASSWORD?</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Login with Facebook</value>
+  </data>
+  <data name="NotAccount" xml:space="preserve">
+    <value>Don't have an account?</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Email or password wrong</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="AlreadyAccount" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>We'll send instructions on how to reset your password to the email address you have registered with us</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>SEND</value>
+  </data>
 </root>

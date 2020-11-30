@@ -163,19 +163,19 @@
     <value>Ciudad</value>
   </data>
   <data name="CityError" xml:space="preserve">
-    <value>Debe seleccionar una ciudad.!</value>
+    <value>Debe seleccionar una ciudad.</value>
   </data>
   <data name="CityPlaceHolder" xml:space="preserve">
-    <value>Selecciona tu ciudad.</value>
+    <value>Seleccione su ciudad.</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Departamento</value>
   </data>
   <data name="DepartmentError" xml:space="preserve">
-    <value>Debe seleccionar un departamento.',</value>
+    <value>Debe seleccionar un departamento.</value>
   </data>
   <data name="DepartmentPlaceHolder" xml:space="preserve">
-    <value>Selecciona tu departamento</value>
+    <value>Seleccione su departamento</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>País</value>
@@ -184,22 +184,22 @@
     <value>Debe seleccionar un país.</value>
   </data>
   <data name="CountryPlaceHolder" xml:space="preserve">
-    <value>Seleccione su país...</value>
+    <value>Seleccione su país.</value>
   </data>
   <data name="Document" xml:space="preserve">
     <value>Documento</value>
   </data>
   <data name="DocumentPlaceHolder" xml:space="preserve">
-    <value>Ingrese su número de documento ...!</value>
+    <value>Ingrese su número de documento.</value>
   </data>
   <data name="DocumentError" xml:space="preserve">
-    <value>Debes ingresar un documento.!</value>
+    <value>Debes ingresar un documento.</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>Primer Nombre</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Escribe tu primer nombre...</value>
+    <value>Escriba su primer nombre.</value>
   </data>
   <data name="FirstNameError" xml:space="preserve">
     <value>Debe introducir un nombre.</value>
@@ -208,7 +208,7 @@
     <value>Apellido</value>
   </data>
   <data name="LastNamePlaceHolder" xml:space="preserve">
-    <value>Escribe tu apellido...</value>
+    <value>Escriba su apellido.</value>
   </data>
   <data name="LastNameError" xml:space="preserve">
     <value>Debe escribir un apellido.</value>
@@ -226,7 +226,7 @@
     <value>Teléfono</value>
   </data>
   <data name="PhoneError" xml:space="preserve">
-    <value>Ingresa tu teléfono...</value>
+    <value>Ingrese su número de teléfono.</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
     <value>Debe introducir un número de teléfono.</value>
@@ -235,7 +235,7 @@
     <value>Segundo Nombre</value>
   </data>
   <data name="SecondNamePlaceHolder" xml:space="preserve">
-    <value>Por favor, introduce tu segundo nombre.</value>
+    <value>Introduzca su segundo nombre.</value>
   </data>
   <data name="SecondNameError" xml:space="preserve">
     <value>Debe escribir un nombre.</value>
@@ -253,7 +253,7 @@
     <value>¡Correcto!</value>
   </data>
   <data name="RegisterMessge" xml:space="preserve">
-    <value>¡Tu usario ha sido registrado correctamente!, se ha enviado un email para confirmar la cuenta del usuario.</value>
+    <value>¡Tu usario ha sido registrado correctamente! , se ha enviado un email para confirmar la cuenta del usuario.</value>
   </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>¡Crea una cuenta para empezar a hacer más!</value>
@@ -274,7 +274,7 @@
     <value>Correo Electrónico</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Introduce tu correo electrónico…</value>
+    <value>Introduzca su correo electrónico.</value>
   </data>
   <data name="EmailError" xml:space="preserve">
     <value>Debes introducir una dirección de correo válida.</value>
@@ -283,7 +283,7 @@
     <value>Contraseña</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Introduce tu contraseña...</value>
+    <value>Introduzca su contraseña.</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
     <value>Debes ingresar tu contraseña</value>
@@ -334,4 +334,94 @@
     <value>Los usuarios registrados por redes sociales, deben cambiar la foto o contraseña en la red social.</value>
   </data>
 
+  <data name="WelcomePink" xml:space="preserve">
+    <value>¡Bienvenido a Pink World!</value>
+  </data>
+  <data name="FightIt" xml:space="preserve">
+    <value>¡Todos podemos combatirlo!</value>
+  </data>
+  <data name="Description1" xml:space="preserve">
+    <value>Esta enfermedad afecta a 1 de cada 8 mujeres según un estudio de Globocan.</value>
+  </data>
+  <data name="FirstStep" xml:space="preserve">
+    <value>¡Primer paso!</value>
+  </data>
+  <data name="SecondStep" xml:space="preserve">
+    <value>¡Segundo paso!</value>
+  </data>
+  <data name="ThirdStep" xml:space="preserve">
+    <value>¡Tercer paso!</value>
+  </data>
+  <data name="FourStep" xml:space="preserve">
+    <value>¡Cuarto paso!</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>¡NOTICIAS!</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>VER TODO</value>
+  </data>
+  <data name="TakeCare" xml:space="preserve">
+    <value>¡Cuídate, examinate!</value>
+  </data>
+  <data name="Description2" xml:space="preserve">
+    <value>La prueba recolecta células con una aguja fina, analiza los resultados y genera un diagnóstico.</value>
+  </data>
+  <data name="Together" xml:space="preserve">
+    <value>Unidos somos más fuertes</value>
+  </data>
+  <data name="Description3" xml:space="preserve">
+    <value>El cáncer de mama afecta tanto a hombres como a mujeres.</value>
+  </data>
+  <data name="BrestCancerPandemic" xml:space="preserve">
+    <value>El cáncer de mama y la pandemia</value>
+  </data>
+  <data name="Description4" xml:space="preserve">
+    <value>La pandemia un obstáculo más</value>
+  </data>
+  <data name="AllInOne" xml:space="preserve">
+    <value>TODO EN UNO</value>
+  </data>
+  <data name="KnowMore" xml:space="preserve">
+    <value>¡CONOCE MÁS!</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿OLVIDASTE TÚ CONTRASEÑA?</value>
+  </data>
+  <data name="CreateWithSocialMedia" xml:space="preserve">
+    <value>O crea una cuenta usando las redes sociales</value>
+  </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Iniciar sesión con Facebook</value>
+  </data>
+  <data name="NotAccount" xml:space="preserve">
+    <value>¿No tienes una cuenta?</value>
+  </data>
+  <data name="Email_Duplicate[1]" xml:space="preserve">
+    <value>Correo Electrónico</value>
+  </data>
+  <data name="EmailPlaceHolder_Duplicate[1]" xml:space="preserve">
+    <value>Introduzca su correo electrónico.</value>
+  </data>
+  <data name="EmailError_Duplicate[1]" xml:space="preserve">
+    <value>Debes introducir una dirección de correo válida.</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Correo electrónico o contraseña incorrecta</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="AlreadyAccount" xml:space="preserve">
+    <value>¿Ya tienes una cuenta?</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Le enviaremos instrucciones sobre cómo restablecer su contraseña a la dirección de correo electrónico que se registró con nosotros.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>ENVIAR</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Mapas</value>
+  </data>
 </root>

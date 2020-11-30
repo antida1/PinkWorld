@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PinkWorld.Prism.Helpers;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -11,7 +12,7 @@ namespace PinkWorld.Prism.ViewModels
     {
         public MapPageViewModel(INavigationService navigationService):base(navigationService)
         {
-            Title = "Maps";
+            Title = Languages.Maps;
         }
     }
 }
