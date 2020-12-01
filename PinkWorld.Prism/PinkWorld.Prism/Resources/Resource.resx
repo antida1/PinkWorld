@@ -328,7 +328,7 @@
     <value>Password updated successfully!</value>
   </data>
   <data name="LoginFacebook" xml:space="preserve">
-    <value>Login With Facebook</value>
+    <value>Login with Facebook</value>
   </data>
   <data name="ChangeOnSocialNetwork" xml:space="preserve">
     <value>Users registered by social networks, must change the photo or password on the social network.</value>
@@ -390,17 +390,11 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>FORGOT PASSWORD?</value>
   </data>
-  <data name="LoginFacebook" xml:space="preserve">
-    <value>Login with Facebook</value>
-  </data>
   <data name="NotAccount" xml:space="preserve">
     <value>Don't have an account?</value>
   </data>
   <data name="LoginError" xml:space="preserve">
     <value>Email or password wrong</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
   </data>
   <data name="AlreadyAccount" xml:space="preserve">
     <value>Already have an account?</value>
@@ -413,5 +407,29 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>SEND</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="FacebookAuth" xml:space="preserve">
+    <value>Facebook Auth</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NewPasswordLabel" xml:space="preserve">
+    <value>Enter your new password to reset the old password</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>Unauthorized</value>
   </data>
 </root>

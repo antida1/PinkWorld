@@ -198,6 +198,24 @@ namespace PinkWorld.Prism.Helpers
 
         public static string Maps => Resource.Maps;
 
+        public static string ResetPassword => Resource.ResetPassword;
+
+        public static string NewPasswordLabel => Resource.NewPasswordLabel;
+
+        public static string NewPassword => Resource.NewPassword;
+
+        public static string OldPassword => Resource.OldPassword;
+
+        public static string ConfirmNewPassword => Resource.ConfirmNewPassword;
+
+        public static string FacebookAuth => Resource.FacebookAuth;
+
+        public static string Canceled => Resource.Canceled;
+
+        public static string Unauthorized => Resource.Unauthorized;
+
+
+
     }
 
 }

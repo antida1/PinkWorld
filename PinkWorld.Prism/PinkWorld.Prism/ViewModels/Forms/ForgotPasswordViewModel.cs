@@ -113,7 +113,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             {
                 if (response.Message == "Error001")
                 {
-                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error, Languages.Accept);
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error001, Languages.Accept);
                 }
                 else
                 {
