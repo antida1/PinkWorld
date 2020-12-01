@@ -7,6 +7,7 @@ using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.ItemViewModel;
 using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
+using PinkWorld.Prism.Views.Dashboard;
 using PinkWorld.Prism.Views.Forms;
 using Prism.Navigation;
 using System.Collections.Generic;
@@ -64,21 +65,22 @@ namespace PinkWorld.Prism.ViewModels
             new Menu
             {
                 Icon = "ic_launcher_selfexamination",
-                PageName = $"{nameof(ListQuizzesPage)}",
+                PageName = $"{nameof(RegisterSelfExaminationPage)}",
                 Title = Languages.RegisterSelfExamination,
                 IsLoginRequired = true
             },
+
             new Menu
             {
                 Icon = "ic_launcher_history",
-                PageName = "",
+                PageName = $"{nameof(ListQuizzesPage)}",
                 Title = Languages.ShowQuizzesHistory,
                 IsLoginRequired = true
             },
             new Menu
             {
                 Icon = "ic_launcher_stadistic",
-                PageName = "",
+                PageName = $"{nameof(StockOverviewPage)}",
                 Title = Languages.ViewStadistics,
                 IsLoginRequired = true
             },

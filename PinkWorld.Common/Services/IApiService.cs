@@ -23,6 +23,8 @@ namespace PinkWorld.Common.Services
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, FacebookProfile request);
 
 
+        Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller, string token);
+
 
     }
 }
