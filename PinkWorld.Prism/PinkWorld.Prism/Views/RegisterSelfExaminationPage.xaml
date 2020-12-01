@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PinkWorld.Prism.Views.RegisterSelfExaminationPage">
+    
+    
+<StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+        <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="Default" BackgroundColor="Transparent" ItemsSource="{Binding Questions}" HasUnevenRows="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"   
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"
+                                           TextColor="Black"
+                                           Text="{Binding Id}" />
+                            <Label Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"
+                                           TextColor="Black"
+                                           Text="{Binding Question}"/>
+                            <Entry Grid.Column="2"
+                                   Text="{Binding Answer.Respond}"
+                                   Placeholder="Entry your answer">
+                            </Entry>
+
+                        </Grid>
+                       
+                          
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

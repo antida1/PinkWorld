@@ -3,10 +3,12 @@ using PinkWorld.Common.Services;
 using PinkWorld.Prism.Helpers;
 using PinkWorld.Prism.ViewModels;
 using PinkWorld.Prism.ViewModels.Catalog;
+using PinkWorld.Prism.ViewModels.Dashboard;
 using PinkWorld.Prism.ViewModels.Forms;
 using PinkWorld.Prism.ViewModels.Transaction;
 using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
+using PinkWorld.Prism.Views.Dashboard;
 using PinkWorld.Prism.Views.Forms;
 using PinkWorld.Prism.Views.Transaction;
 using Prism;
@@ -58,6 +60,8 @@ namespace PinkWorld.Prism
             containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
             containerRegistry.RegisterForNavigation<SimpleResetPasswordPage, ResetPasswordViewModel>();
             containerRegistry.RegisterForNavigation<EditUserPage, EditUserPageViewModel>();
+            containerRegistry.RegisterForNavigation<StockOverviewPage, StockOverviewViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterSelfExaminationPage, RegisterSelfExaminationPageViewModel>();
         }
 
         public static string BaseImageUrl { get; } = "https://demoonsale.blob.core.windows.net/users/";
