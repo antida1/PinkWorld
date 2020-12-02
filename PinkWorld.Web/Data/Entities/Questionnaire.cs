@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PinkWorld.Web.Data.Entities
 {
@@ -9,5 +10,8 @@ namespace PinkWorld.Web.Data.Entities
         [MaxLength(200, ErrorMessage = "the field {0} must contain less than {1} characteres.")]
         [Required]
         public string Question { get; set; }
+
+        public string Answer { get; set; }
+
     }
 }

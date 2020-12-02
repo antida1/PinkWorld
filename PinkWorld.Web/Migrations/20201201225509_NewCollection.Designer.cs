@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinkWorld.Web.Data;
 
 namespace PinkWorld.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20201201225509_NewCollection")]
+    partial class NewCollection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,6 +131,25 @@ namespace PinkWorld.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("QuestionId1");
+
+                    b.Property<string>("Respond")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId1");
+
+                    b.ToTable("Answer");
+                });
+
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.City", b =>
                 {
                     b.Property<int>("Id")
@@ -211,8 +232,6 @@ namespace PinkWorld.Web.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Answer");
 
                     b.Property<string>("Question")
                         .IsRequired()
@@ -409,6 +428,13 @@ namespace PinkWorld.Web.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PinkWorld.Web.Data.Entities.Answer", b =>
+                {
+                    b.HasOne("PinkWorld.Web.Data.Entities.Questionnaire", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId1");
                 });
 
             modelBuilder.Entity("PinkWorld.Web.Data.Entities.City", b =>
