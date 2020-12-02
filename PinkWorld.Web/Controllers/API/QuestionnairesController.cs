@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PinkWorld.Common.Responses;
 using PinkWorld.Web.Data;
+using PinkWorld.Web.Data.Entities;
 
 namespace PinkWorld.Web.Controllers.API
 {
@@ -25,7 +27,23 @@ namespace PinkWorld.Web.Controllers.API
                 .ToList());
         }
 
+        [HttpPut]
+        public IActionResult GetQuizzes(List<QuestionnaireResponse> response)
+        {
+            foreach (var item in response) 
+            {
+               Questionnaire questionnaire = _context.Questionnaires.FirstOrDefault(i=>i.Id == item.Id);
+                
+                Answer answer = new Answer 
+                {
+                    Respond = item.Answer,
+                    Question = questionnaire
+                };
+            }
 
+            return Ok();
+
+        }
 
     }
 }

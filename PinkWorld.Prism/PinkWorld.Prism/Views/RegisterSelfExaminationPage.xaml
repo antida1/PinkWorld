@@ -33,7 +33,7 @@
                             <Entry  Grid.Row="1"
                                             Grid.Column="1"
                                             VerticalOptions="EndAndExpand"
-                                            Text="{Binding Answer.Respond}"
+                                            Text="{Binding Answer}"
                                             Placeholder="Entry your answer">
                             </Entry>
                         </Grid>
@@ -48,7 +48,7 @@
                         VerticalOptions="End">
             <!--  Send button  -->
             <buttons:SfButton
-                            Command="{Binding RegisterSelfExaminationCommand}"
+                            Command="{Binding AnswerCommand}"
                             CornerRadius="4"
                             Text="{i18n:Translate Send}" />
 
