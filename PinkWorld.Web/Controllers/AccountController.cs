@@ -313,13 +313,13 @@ namespace PinkWorld.Web.Controllers
             return View();
         }
 
-        public IActionResult RecoverPassword()
+        public IActionResult RecoveredPassword()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RecoverPassword(RecoverPasswordViewModel model)
+        public async Task<IActionResult> RecoveredPassword(RecoverPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
