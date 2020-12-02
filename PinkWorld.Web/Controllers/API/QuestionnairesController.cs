@@ -30,16 +30,32 @@ namespace PinkWorld.Web.Controllers.API
         [HttpPut]
         public IActionResult GetQuizzes(List<QuestionnaireResponse> response)
         {
+            List<Questionnaire> questionnaires = null;
+
             foreach (var item in response) 
             {
                Questionnaire questionnaire = _context.Questionnaires.FirstOrDefault(i=>i.Id == item.Id);
-                
-                Answer answer = new Answer 
+
+                Answer answer = new Answer
                 {
                     Respond = item.Answer,
                     Question = questionnaire
+
                 };
+
+                questionnaires.Add(questionnaire);
+
+                _context.Answers.Add(answer);
+
             }
+
+            Quiz quiz = new Quiz
+            {
+                Date = DateTime.Today,
+                Questions = questionnaires
+            };
+
+            _context.Quizzes.Add(quiz);
 
             return Ok();
 
