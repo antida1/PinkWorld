@@ -4,6 +4,7 @@ using PinkWorld.Common.Models;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Helpers;
+using PinkWorld.Prism.Views.Catalog;
 using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace PinkWorld.Prism.ViewModels
 
             await App.Current.MainPage.DisplayAlert(Languages.Ok, "Your answer was save successfull", Languages.Accept);
 
-
+            await _navigationService.NavigateAsync(nameof(NavigationTravelPage));
 
         }
     }
