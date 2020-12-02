@@ -115,6 +115,24 @@ namespace PinkWorld.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entry your answer.
+        /// </summary>
+        public static string Answer {
+            get {
+                return ResourceManager.GetString("Answer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your answer was save successfull.
+        /// </summary>
+        public static string AnswerSave {
+            get {
+                return ResourceManager.GetString("AnswerSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Breast cancer and the pandemic.
         /// </summary>
         public static string BrestCancerPandemic {
@@ -876,6 +894,15 @@ namespace PinkWorld.Prism.Resources {
         public static string ResetPassword {
             get {
                 return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Quiz.
+        /// </summary>
+        public static string SearchQ {
+            get {
+                return ResourceManager.GetString("SearchQ", resourceCulture);
             }
         }
         

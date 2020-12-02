@@ -74,7 +74,7 @@ namespace PinkWorld.Prism.ViewModels
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace PinkWorld.Prism.ViewModels
                    Id = q.Id,
                    Date = q.DateLocal,
                    Questions = q.Questions
-
+                  
                 })
               .ToList());
 

@@ -447,4 +447,13 @@
   <data name="Unauthorized" xml:space="preserve">
     <value>No autorizado</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>¡Digita tu respuesta!</value>
+  </data>
+  <data name="AnswerSave" xml:space="preserve">
+    <value>¡Tu respuesta se ha guardado con éxito!</value>
+  </data>
+  <data name="SearchQ" xml:space="preserve">
+    <value>Buscar Examen</value>
+  </data>
 </root>

@@ -444,4 +444,13 @@
   <data name="Unauthorized" xml:space="preserve">
     <value>Non autorisé</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Entrez votre réponse!</value>
+  </data>
+  <data name="AnswerSave" xml:space="preserve">
+    <value>Votre réponse a été enregistrer succès!</value>
+  </data>
+  <data name="SearchQ" xml:space="preserve">
+    <value>Rechercher un questionnaire</value>
+  </data>
 </root>

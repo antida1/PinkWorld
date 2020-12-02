@@ -432,4 +432,13 @@
   <data name="Unauthorized" xml:space="preserve">
     <value>Unauthorized</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Entry your answer</value>
+  </data>
+  <data name="AnswerSave" xml:space="preserve">
+    <value>Your answer was save successfull</value>
+  </data>
+  <data name="SearchQ" xml:space="preserve">
+    <value>Search Quiz</value>
+  </data>
 </root>
