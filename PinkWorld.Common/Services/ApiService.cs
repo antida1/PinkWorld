@@ -254,7 +254,83 @@ namespace PinkWorld.Common.Services
                 };
             }
         }
+        
 
+         public async Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller, string token)
+          {
+            try
+            {
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase),
+                };
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                string result = await response.Content.ReadAsStringAsync();
 
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = result,
+                    };
+                }
+
+                List<T> list = JsonConvert.DeserializeObject<List<T>>(result);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = list
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<Response> GetListAsync(string urlBase, string servicePrefix, string controller, string token, List<QuestionnaireResponse> question)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(question);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                string answer = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<Response>(answer);
+                }
+
+                UserResponse user = JsonConvert.DeserializeObject<UserResponse>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = user
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
     }
 }

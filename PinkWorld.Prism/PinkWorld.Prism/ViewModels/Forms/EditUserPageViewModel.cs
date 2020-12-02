@@ -53,7 +53,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             _apiService = apiService;
             _filesHelper = filesHelper;
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
-            Title = "Edit User";
+            Title = Languages.ModifyUser;
             User = token.User;
             Image = User.ImageFullPath;
             IsOnSaleUser = User.LoginType == LoginType.PinkWorld;
@@ -169,7 +169,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
@@ -238,9 +238,9 @@ namespace PinkWorld.Prism.ViewModels.Forms
                 {
                     await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error001, Languages.Accept);
                 }
-                else if (response.Message == "Error004")
+                else if (response.Message == "Error003")
                 {
-                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error001, Languages.Accept);
+                    await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.Error003, Languages.Accept);
                 }
                 else
                 {
@@ -285,7 +285,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
 
             if (string.IsNullOrEmpty(User.Email) || !_regexHelper.IsValidEmail(User.Email))
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "Error email", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.EmailError, Languages.Accept);
                 return false;
             }
 

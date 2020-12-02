@@ -333,7 +333,6 @@
   <data name="ChangeOnSocialNetwork" xml:space="preserve">
     <value>Los usuarios registrados por redes sociales, deben cambiar la foto o contraseña en la red social.</value>
   </data>
-
   <data name="WelcomePink" xml:space="preserve">
     <value>¡Bienvenido a Pink World!</value>
   </data>
@@ -391,7 +390,7 @@
   <data name="CreateWithSocialMedia" xml:space="preserve">
     <value>O crea una cuenta usando las redes sociales</value>
   </data>
-  <data name="LoginFacebook" xml:space="preserve">
+  <data name="LoginFacebook_Duplicate[1]" xml:space="preserve">
     <value>Iniciar sesión con Facebook</value>
   </data>
   <data name="NotAccount" xml:space="preserve">
@@ -409,7 +408,7 @@
   <data name="LoginError" xml:space="preserve">
     <value>Correo electrónico o contraseña incorrecta</value>
   </data>
-  <data name="Logout" xml:space="preserve">
+  <data name="Logout_Duplicate[1]" xml:space="preserve">
     <value>Salir</value>
   </data>
   <data name="AlreadyAccount" xml:space="preserve">
@@ -423,5 +422,29 @@
   </data>
   <data name="Maps" xml:space="preserve">
     <value>Mapas</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="NewPasswordLabel" xml:space="preserve">
+    <value>Introduzca su nueva contraseña para restablecer la contraseña anterior</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Contraseña Antigua</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirma la nueva contraseña</value>
+  </data>
+  <data name="FacebookAuth" xml:space="preserve">
+    <value>¡Autorización de Facebook!</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>No autorizado</value>
   </data>
 </root>

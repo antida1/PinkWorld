@@ -195,13 +195,13 @@ namespace PinkWorld.Prism.ViewModels.Forms
                             await LoginFacebookAsync(facebookProfile);
                             break;
                         case FacebookActionStatus.Canceled:
-                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Canceled", "Ok");
+                            await App.Current.MainPage.DisplayAlert(Languages.FacebookAuth, Languages.Canceled, Languages.Ok);
                             break;
                         case FacebookActionStatus.Error:
-                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Error", "Ok");
+                            await App.Current.MainPage.DisplayAlert(Languages.FacebookAuth, Languages.Error, Languages.Ok);
                             break;
                         case FacebookActionStatus.Unauthorized:
-                            await App.Current.MainPage.DisplayAlert("Facebook Auth", "Unauthorized", "Ok");
+                            await App.Current.MainPage.DisplayAlert(Languages.FacebookAuth, Languages.Unauthorized, Languages.Ok);
                             break;
                     }
 
@@ -233,7 +233,7 @@ namespace PinkWorld.Prism.ViewModels.Forms
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(Languages.Error, "invalid email or password", Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.LoginError, Languages.Accept);
                 Password = string.Empty;
                 return;
             }

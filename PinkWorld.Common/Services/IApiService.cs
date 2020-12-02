@@ -1,6 +1,7 @@
 ﻿using PinkWorld.Common.Models;
 using PinkWorld.Common.Request;
 using PinkWorld.Common.Responses;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PinkWorld.Common.Services
@@ -23,6 +24,8 @@ namespace PinkWorld.Common.Services
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, FacebookProfile request);
 
 
+        Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller, string token);
 
+        Task<Response> GetListAsync(string urlBase, string servicePrefix, string controller,string token, List<QuestionnaireResponse> Request);
     }
 }

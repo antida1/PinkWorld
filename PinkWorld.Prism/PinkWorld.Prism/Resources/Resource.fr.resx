@@ -306,7 +306,6 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>L'appareil ne prend pas en charge l'accès à la galerie.</value>
   </data>
-
   <data name="LoginFirstMessage" xml:space="preserve">
     <value>Vous devez être connecté pour accéder à cette page.</value>
   </data>
@@ -388,7 +387,7 @@
   <data name="CreateWithSocialMedia" xml:space="preserve">
     <value>Ou créez un compte en utilisant les réseaux sociaux</value>
   </data>
-  <data name="LoginFacebook" xml:space="preserve">
+  <data name="LoginFacebook_Duplicate[1]" xml:space="preserve">
     <value>Connexion avec Facebook</value>
   </data>
   <data name="NotAccount" xml:space="preserve">
@@ -420,5 +419,29 @@
   </data>
   <data name="Maps" xml:space="preserve">
     <value>Cartes</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="NewPasswordLabel" xml:space="preserve">
+    <value>Saisissez votre nouveau mot de passe</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Ancien &amp;mot de passe :</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>&amp;Nouveau mot de passe :</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirmer le nouveau mot de passe</value>
+  </data>
+  <data name="FacebookAuth" xml:space="preserve">
+    <value>Autorisation Facebook</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Annulé</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>Non autorisé</value>
   </data>
 </root>
