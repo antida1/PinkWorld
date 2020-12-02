@@ -24,6 +24,8 @@ namespace PinkWorld.Web.Data
 
         public DbSet<Quiz> Quizzes { get; set; }
 
+        public DbSet<Answer> Answers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);         
