@@ -214,7 +214,11 @@ namespace PinkWorld.Prism.Helpers
 
         public static string Unauthorized => Resource.Unauthorized;
 
+        public static string Answer => Resource.Answer;
 
+        public static string AnswerSave => Resource.AnswerSave;
+
+        public static string SerachQ => Resource.SearchQ;
 
     }
 

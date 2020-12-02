@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 using PinkWorld.Common.Helpers;
-using PinkWorld.Common.Models;
 using PinkWorld.Common.Responses;
 using PinkWorld.Common.Services;
 using PinkWorld.Prism.Helpers;
+using PinkWorld.Prism.Views;
 using PinkWorld.Prism.Views.Catalog;
 using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 
 namespace PinkWorld.Prism.ViewModels
@@ -19,7 +18,7 @@ namespace PinkWorld.Prism.ViewModels
         private readonly IApiService _apiService;
         private readonly IRegexHelper _regexHelper;
         private List<QuestionnaireResponse> _quizes;
-        private AnswerResponse _answer;
+        private readonly AnswerResponse _answer;
         private bool _isRunning;
         private bool _isEnabled;
         private DelegateCommand _answercommand;
@@ -62,16 +61,16 @@ namespace PinkWorld.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
-            
+
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.GetListAsync<QuestionnaireResponse>(url,"/api", "/Questionnaires", token.Token);
+            Response response = await _apiService.GetListAsync<QuestionnaireResponse>(url, "/api", "/Questionnaires", token.Token);
             IsRunning = false;
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
@@ -102,15 +101,15 @@ namespace PinkWorld.Prism.ViewModels
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.GetListAsync(url, "/api", "/Questionnaires", token.Token,Questions);
+            Response response = await _apiService.GetListAsync(url, "/api", "/Questionnaires", token.Token, Questions);
             IsRunning = false;
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
-           
+
 
 
             if (!response.IsSuccess)
@@ -119,9 +118,9 @@ namespace PinkWorld.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert(Languages.Ok, "Your answer was save successfull", Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.AnswerSave, Languages.Accept);
 
-            await _navigationService.NavigateAsync(nameof(NavigationTravelPage));
+            await _navigationService.NavigateAsync($"/{nameof(PinkWorldMasterDetailPage)}/NavigationPage/{nameof(NavigationTravelPage)}");
 
         }
     }
