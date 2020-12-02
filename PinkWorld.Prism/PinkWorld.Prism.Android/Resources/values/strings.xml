@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">PinkWorld.Prism.Droid</string>
+	<string name="app_name">PinkWorld</string>
   <string name="facebook_app_name">PinkWorld</string>
   <string name="facebook_app_id">816148722500404</string>
   <string name="fb_login_protocol_scheme">fb816148722500404</string>
